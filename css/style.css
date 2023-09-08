@@ -10144,3 +10144,14 @@ h6,
 .card .content .btn button:hover{
   transform: scale(0.9);
 }
+
+.btn-custom{
+  color: #343a40;
+}
+
+.btn-custom:hover{
+  color: #343a40;
+  border: 2px solid #343a40;
+  border-radius: 25px;
+  padding: 5px;
+}
