@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syed Mahad Ehsan - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+    <!-- Toggle Light/Dark Mode Button -->
+    <button id="modeToggle" onclick="toggleMode()">Toggle Light/Dark Mode</button>
+
+    <!-- Floating Social Media Buttons -->
+    <div class="social-links">
+        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.github.com" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+
     <!-- Navigation Bar -->
     <nav id="navbar">
         <div class="logo">
@@ -20,7 +30,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="resume.pdf" target="_blank" class="resume-btn">Download Resume</a></li>
+            <li><a href="Syed Mahad Ehsan's Resume.pdf" target="_blank" class="resume-btn" download>Download Resume</a></li>
         </ul>
     </nav>
 
@@ -87,18 +97,34 @@
     <section id="projects">
         <h2>Projects</h2>
         <div class="projects-grid">
-            <div class="project-item">
+            <div class="project-item" onclick="openModal('project1')">
                 <h3>Distributed System Architecture</h3>
                 <p>Designed and implemented a distributed system to expand scalability at KNYSYS, LLC.</p>
-                <a href="#" class="project-link">Learn More</a>
+                <a href="#projects" class="project-link">Learn More</a>
             </div>
-            <div class="project-item">
+            <div class="project-item" onclick="openModal('project2')">
                 <h3>Staff Management System</h3>
                 <p>Developed a management system for staff reporting, duty scheduling, and notifications.</p>
-                <a href="#" class="project-link">Learn More</a>
+                <a href="#projects" class="project-link">Learn More</a>
             </div>
         </div>
     </section>
+
+    <!-- Modals for Projects -->
+    <div id="project1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project1')">&times;</span>
+            <h3>Distributed System Architecture</h3>
+            <p>Details about the distributed system architecture project.</p>
+        </div>
+    </div>
+    <div id="project2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project2')">&times;</span>
+            <h3>Staff Management System</h3>
+            <p>Details about the staff management system project.</p>
+        </div>
+    </div>
 
     <!-- Education Section -->
     <section id="education">
