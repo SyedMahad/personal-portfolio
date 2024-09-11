@@ -49,6 +49,16 @@ section {
     margin: 0 auto;
 }
 
+/* Centering all headings (h2, h3, etc.) */
+h2, h3 {
+    text-align: center;
+}
+
+/* Optionally, you can center smaller headings too */
+h4, h5, h6 {
+    text-align: center;
+}
+
 h2 {
     font-size: 32px;
     margin-bottom: 20px;
@@ -57,8 +67,12 @@ h2 {
 }
 
 #hero {
-    height: 100vh;
-    background: url('background.jpg') no-repeat center center/cover;
+    margin-top: 10vh;
+    height: 60vh;
+    width: 100vw;
+    padding: 0;
+    background: url('background-01.jpg') no-repeat center center/cover;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,11 +101,18 @@ h2 {
     gap: 20px;
 }
 
-.skill-item, .project-item {
+.skill-item, .project-item, .timeline-item, .education-item {
     background-color: #333;
     padding: 20px;
+    margin: 10px;
     text-align: center;
     border-radius: 10px;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.skill-item:hover, .project-item:hover, .timeline-item:hover, .education-item:hover {
+    outline: 2px solid #1e90ff; /* Blue outline on hover */
+    transform: scale(1.05); /* Slight scale-up effect */
 }
 
 .skill-item i {
@@ -111,29 +132,22 @@ h2 {
     flex-direction: column;
 }
 
-.timeline-item {
-    padding: 20px;
-    background-color: #333;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
-
-.education-item {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-}
-
 #contact form {
     display: flex;
     flex-direction: column;
 }
 
 #contact form input, #contact form textarea {
+    background-color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 15px;
     border: none;
     border-radius: 5px;
+}
+
+#contact form input:focus, #contact form textarea:focus {
+    outline: 2px solid #1e90ff; /* Blue outline on focus */
 }
 
 #contact form .submit-btn {
@@ -142,4 +156,10 @@ h2 {
     border: none;
     padding: 10px;
     cursor: pointer;
+    font-weight: bold;
 }
+
+#contact form .submit-btn:hover {
+    background-color: #1c7ccc; /* Slightly darker blue on hover */
+}
+
