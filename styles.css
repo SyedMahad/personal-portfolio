@@ -74,9 +74,9 @@ h2, h3 {
 }
 
 /* Optionally, you can center smaller headings too */
-h4, h5, h6 {
+/* h4, h5, h6 {
     text-align: center;
-}
+} */
 
 h2 {
     font-size: 32px;
