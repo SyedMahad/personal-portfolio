@@ -51,5 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'none';
         });
     });
-    
+
 });
+
+function toggleMode() {
+    // Toggle the icon based on the current mode
+    const icon = document.getElementById('toggleIcon');
+    if (document.body.classList.contains('light-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun'); // Change to sun icon for dark mode
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon'); // Change to moon icon for light mode
+    }
+}
