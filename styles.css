@@ -15,14 +15,23 @@ body.light-mode {
 /* Toggle Button */
 #modeToggle {
     position: fixed;
-    top: 20px;
+    top: 10vh;
     right: 20px;
-    background-color: #1e90ff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
+    background-color: #1e90ff; /* Bright blue background for visibility */
+    color: white; /* White text */
+    padding: 10px 15px; /* Add padding for spacing */
     cursor: pointer;
     border-radius: 5px;
+    z-index: 1001; /* Ensure the button appears above other content */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for visibility */
+    border: none; /* Remove any border */
+    font-size: 16px; /* Set a readable font size */
+}
+
+/* Light Mode button style */
+body.light-mode #modeToggle {
+    background-color: #333; /* Change button color in light mode */
+    color: white;
 }
 
 nav {
@@ -63,7 +72,7 @@ nav ul li a:hover {
 }
 
 section {
-    padding: 80px 20px;
+    padding: 20px 20px;
     max-width: 1100px;
     margin: 0 auto;
 }
@@ -78,11 +87,35 @@ h2, h3 {
     text-align: center;
 } */
 
+/* Blue underline for all h2 elements */
 h2 {
     font-size: 32px;
     margin-bottom: 20px;
     border-bottom: 2px solid #1e90ff;
     padding-bottom: 10px;
+}
+
+/* Ensure content inside modal is left-aligned by default */
+.modal-content {
+    text-align: center; /* Keep the rest of the content left-aligned */
+}
+
+/* Center only the modal h3 headings */
+.modal-content h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #1e90ff;
+    padding-bottom: 10px;
+    display: inline-block;
+    width: auto; /* Ensure the width is auto for proper centering */
+    text-align: center; /* Ensure the text is centered */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Reset text alignment for the rest of the content */
+.modal-content p, .modal-content h4, .modal-content ul {
+    text-align: left; /* Ensure paragraphs and lists stay left-aligned */
 }
 
 #hero {

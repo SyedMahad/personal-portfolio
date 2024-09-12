@@ -97,25 +97,25 @@
     <section id="projects">
         <h2>Projects</h2>
         <div class="projects-grid">
-            <!-- Distributed System Architecture -->
-            <div class="project-item" onclick="openModal('project1')">
-                <h3>Distributed System Architecture</h3>
-                <p>Designed and implemented a scalable system for over 10,000 users using Docker and Azure VMSS.</p>
-                <a href="#" class="project-link">Learn More</a>
-            </div>
-
             <!-- Staff Management System -->
-            <div class="project-item" onclick="openModal('project2')">
+            <div class="project-item" onclick="openModal('project1')">
                 <h3>Staff Management System</h3>
                 <p>Developed a comprehensive system for officer scheduling, check-ins, notifications, and reports.</p>
-                <a href="#" class="project-link">Learn More</a>
+                <a href="#projects" class="project-link">Learn More</a>
+            </div>
+
+            <!-- Distributed System Architecture -->
+            <div class="project-item" onclick="openModal('project2')">
+                <h3>Distributed System Architecture</h3>
+                <p>Designed and implemented a scalable system for over 10,000 users using Docker and Azure VMSS.</p>
+                <a href="#projects" class="project-link">Learn More</a>
             </div>
 
             <!-- Open edX Customization -->
             <div class="project-item" onclick="openModal('project3')">
                 <h3>Open edX Customization</h3>
                 <p>Customized Open edX for a multi-tenant SaaS model with OTP-based login.</p>
-                <a href="#" class="project-link">Learn More</a>
+                <a href="#projects" class="project-link">Learn More</a>
             </div>
         </div>
     </section>
@@ -124,6 +124,31 @@
     <div id="project1" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('project1')">&times;</span>
+            <h3>Staff Management System</h3>
+            <h4>Project Overview:</h4>
+            <p> This system was designed to manage the scheduling, tracking, and reporting of officer duties at various sites. The solution encompassed multiple complex features aimed at improving efficiency and automating manual processes. </p>
+            <h4>Key Features:</h4>
+            <p>
+                <ul>
+                    <li><strong>Real-Time Scheduling::</strong> Automated scheduling of officers for various sites, ensuring that duties were assigned efficiently and in real-time. </li>
+                    <li><strong>Notifications:</strong> Officers and site managers received notifications regarding duty schedules, check-ins, check-outs, and leave approvals. </li>
+                    <li><strong>Reports Generation:</strong> Generated detailed reports on officer duties, attendance, and overall site performance. </li>
+                    <li><strong>Messaging:</strong> Included messaging features for seamless communication between officers and site managers. </li>
+                    <li><strong>Officer Pre-check-in/Check-in/Check-out (Mobile App):</strong> Handled backend logic for officer check-in and check-out, integrated with a mobile app. </li>
+                    <li><strong>Leave Management System:</strong> Leave requests, approval workflows, and tracking. </li>
+                    <li><strong>Screening and Vetting for Signup:</strong> Introduced a sign-up process that required thorough vetting and approval before officers could join. </li>
+                </ul>
+            </p>
+            <h4>User Authentication and Permissions:</h4>
+            <p> This system was built around a role-based access control (RBAC) mechanism. Different users, such as officers, site managers, and admins, had specific roles with varying levels of access to features. Authentication was handled via token-based security, ensuring secure access to the system, while permissions were tightly managed according to user roles. </p>
+            <h4>Challenges and Data Synchronization:</h4>
+            <p> Managing real-time data and synchronizing across the mobile app and web interface posed a challenge. However, the use of caching (e.g., Redis) and optimized database queries ensured that all actions—scheduling, notifications, and reports—were reflected instantly across the system. Additionally, managing heavy traffic during peak check-in/out times was optimized using load balancing. </p>
+        </div>
+    </div>
+
+    <div id="project2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project2')">&times;</span>
             <h3>Distributed System Architecture</h3>
             <h4>Project Overview:</h4>
             <p> This project focused on addressing the scalability challenges of a Django-based application serving over 10,000 users. The goal was to enhance the architecture to allow seamless growth without compromising performance. </p>
@@ -154,34 +179,27 @@
         </div>
     </div>
 
-    <div id="project2" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('project2')">&times;</span>
-            <h3>Staff Management System</h3>
-            <p>
-                A comprehensive system to manage officer duties at various sites. The key features include:
-                <ul>
-                    <li>Real-time scheduling of officer duties across different sites.</li>
-                    <li>Leave management, notifications, and report generation.</li>
-                    <li>Backend for pre-check-in, check-in, and check-out functionalities integrated with a mobile app.</li>
-                </ul>
-                User authentication was handled through a role-based access control (RBAC) system. Challenges in real-time data synchronization were addressed using caching and optimized queries.
-            </p>
-        </div>
-    </div>
-
     <div id="project3" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('project3')">&times;</span>
             <h3>Open edX Customization</h3>
+            <h4>Project Overview:</h4>
+            <p> This project involved customizing Open edX to transform it into a Software-as-a-Service (SaaS) platform, allowing multiple organizations to have their own uniquely branded learning platforms. Additional functionalities, like OTP authentication, were also integrated. </p>
+            <h4>Key Customizations:</h4>
             <p>
-                Customized Open edX into a SaaS platform, allowing organizations to sign up and manage their users with unique themes.
                 <ul>
-                    <li>Converted the platform into a multi-tenant SaaS model.</li>
-                    <li>Added OTP-based login functionality for enhanced security.</li>
-                    <li>Improved user experience through organization-specific themes.</li>
+                    <li><strong>SaaS Model:</strong> The core LMS was modified to support a multi-tenant structure, enabling different organizations to sign up and have exclusive themes. Each organization could customize their learning environment, creating a unique experience for their users. </li>
+                    <li><strong>OTP on User Login:</strong> Added an extra layer of security by implementing an OTP (One-Time Password) functionality during login, improving user security. </li>
+                    <li><strong>Custom Themes:</strong> Organizations were able to customize the look and feel of their LMS, resulting in a more personalized user experience. </li>
                 </ul>
-                These changes improved the scalability of Open edX and provided a tailored experience for different organizations.
+            </p>
+            <h4> Impact on User Experience: </h4>
+            <p>
+                <ul>
+                    <li><strong>Improved Personalization:</strong> The introduction of custom themes allowed each organization to offer a tailored experience for their users, aligning the platform’s design with their branding. </li>
+                    <li><strong>Enhanced Security:</strong> The OTP feature significantly improved login security, which was particularly beneficial for institutions handling sensitive data. </li>
+                    <li><strong>Ease of Access:</strong> The SaaS model made it easier for organizations to onboard and deploy their own LMS without needing to manage the backend infrastructure, making the platform more scalable and user-friendly. </li>
+                </ul>
             </p>
         </div>
     </div>
