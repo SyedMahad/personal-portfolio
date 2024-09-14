@@ -1,608 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title> Syed Mahad Ehsan </title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"> 
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Mahad Ehsan - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+<body>
+    <!-- Toggle Light/Dark Mode Button with Icon -->
+    <button id="modeToggle" onclick="toggleMode()">
+        <i id="toggleIcon" class="fas fa-sun"></i>
+    </button>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
-    <!-- Navbar Start -->
-    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
-            <h1 class="m-0 display-5"> 
-                <!-- <span class="text-secondary">Syed</span>
-                Mahad
-                <span class="text-secondary">Ehsan</span> -->
-                <span class="text-secondary">Syed Mahad Ehsan</span>
-            </h1>
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
-            <div class="navbar-nav m-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Home</a>
-                <a href="#about" class="nav-item nav-link">About</a>
-                <a href="#qualification" class="nav-item nav-link">Quality</a>
-                <a href="#skill" class="nav-item nav-link">Skill</a>
-                <a href="#service" class="nav-item nav-link">Service</a>
-                <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
-                <a href="#testimonial" class="nav-item nav-link">Review</a>
-                <!-- <a href="#blog" class="nav-item nav-link">Blog</a> -->
-                <a href="#contact" class="nav-item nav-link">Contact</a>
-            </div>
-            <!-- <a href="" class="btn btn-outline-primary d-none d-lg-block">Hire Me</a> -->
-            <a href="" class="btn btn-outline-secondary d-none d-lg-block">Hire Me</a>
+    <!-- Floating Social Media Buttons -->
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/syed-mahad-ehsan/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/SyedMahad" target="_blank"><i class="fab fa-github"></i></a>
+        <!-- <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a> -->
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <div class="logo">
+            <h1>Syed Mahad Ehsan</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#work">Work Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="Syed Mahad Ehsan's Resume.pdf" target="_blank" class="resume-btn" download>Download Resume</a></li>
+        </ul>
+        <!-- Hamburger menu icon for small screens -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
         </div>
     </nav>
-    <!-- Navbar End -->
 
+    <!-- Parallax Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Backend Software Developer</h1>
+            <p>Building scalable and efficient software systems</p>
+            <a href="#projects" class="cta-btn">View My Projects</a>
+        </div>
+    </section>
 
-    <!-- Video Modal Start -->
-    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>        
-                    <!-- 16:9 aspect ratio -->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-                    </div>
-                </div>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I'm Syed Mahad Ehsan, a passionate Software Developer with over 3 years of experience in designing and building scalable, high-performance software systems. I specialize in Python and Django and have worked on a wide range of projects, from small-scale applications to large, distributed systems serving thousands of users. My strong technical foundation allows me to build reliable, secure, and efficient solutions, ensuring seamless user experiences.
+        </p>
+        <p>
+            Over the course of my career, I have worked with teams to develop SaaS products, implement RESTful APIs, optimize database queries, and handle complex server-side logic. I have a deep understanding of the full software development lifecycle, including architecture design, development, testing, deployment, and maintenance.
+        </p>
+        <p>
+            In addition to my technical expertise, I’m highly focused on delivering clean, maintainable code and have a keen interest in learning new technologies and best practices. I’m comfortable working in cloud environments such as AWS and Azure, and I have experience with containerization tools like Docker, enabling me to build and deploy applications that scale dynamically.
+        </p>
+        <p>
+            When I’m not coding, I’m constantly expanding my knowledge through personal projects, contributing to open-source software, and engaging with the tech community. I’m always looking for ways to enhance my skill set and collaborate with like-minded professionals to build innovative and impactful solutions.
+        </p>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fas fa-code"></i>
+                <h3>Programming Languages</h3>
+                <p>Python, JavaScript</p>
             </div>
+            <div class="skill-item">
+                <i class="fas fa-cogs"></i>
+                <h3>Frameworks</h3>
+                <p>Django, Flask, React, React Native</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <h3>Databases</h3>
+                <p>MySQL, PostgreSQL, MongoDB, DynamoDB</p>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud Services</h3>
+                <p>AWS, GCP, Azure Cloud Services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="work">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Software Engineer | Diya Interactive</h3>
+                <span>June 2023 - Present</span>
+                <p>Working on a SaaS product. Designed and developed RESTful APIs, Django views, and cron jobs. </p>
+                <p><strong>Technologies used:</strong> Python, Django, MySQL (Amazon RDS), Amazon S3, Amazon EC2, and Amazon EBS (Elastic Beanstalk). </p>
+            </div>
+            <div class="timeline-item">
+                <h3>Associate Software Developer | KNYSYS, LLC</h3>
+                <span>September 2022 - May 2023</span>
+                <p>Developed a distributed system, designed RESTful APIs, Django views, cron jobs, and Celery tasks. </p>
+                <p><strong>Technologies used:</strong> Python, Django, MySQL, PostgreSQL, MongoDB, DynamoDB, Azure Cloud Services, AWS Lambda, and Docker. </p>
+            </div>
+            <div class="timeline-item">
+                <h3>Junior Software Developer | KNYSYS, LLC</h3>
+                <span>March 2021 - September 2022</span>
+                <p>Worked on developing a distributed system, creating RESTful APIs, and managing cron jobs. </p>
+                <p><strong>Technologies used:</strong> Python, Django, MySQL, and Docker. </p>
+            </div>
+            <div class="timeline-item">
+                <h3>Full-stack Developer Intern | Bitrupt</h3>
+                <span>February 2020 - May 2020</span>
+                <p>Worked on developing React Native applications from scratch, and contributed to React web applications. </p>
+                <p><strong>Technologies used:</strong> React Native, React, JavaScript, Firebase, and SQLite. </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <!-- Staff Management System -->
+            <div class="project-item" onclick="openModal('project1')">
+                <h3>Staff Management System</h3>
+                <p>Developed a comprehensive system for officer scheduling, check-ins, notifications, and reports.</p>
+                <a href="#projects" class="project-link">Learn More</a>
+            </div>
+
+            <!-- Distributed System Architecture -->
+            <div class="project-item" onclick="openModal('project2')">
+                <h3>Distributed System Architecture</h3>
+                <p>Designed and implemented a scalable system for over 10,000 users using Docker and Azure VMSS.</p>
+                <a href="#projects" class="project-link">Learn More</a>
+            </div>
+
+            <!-- Open edX Customization -->
+            <div class="project-item" onclick="openModal('project3')">
+                <h3>Open edX Customization</h3>
+                <p>Customized Open edX for a multi-tenant SaaS model with OTP-based login.</p>
+                <a href="#projects" class="project-link">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals for Projects -->
+    <div id="project1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project1')">&times;</span>
+            <h3>Staff Management System</h3>
+            <h4>Project Overview:</h4>
+            <p> This Software as a Service system was designed to manage the scheduling, tracking, and reporting of officer duties at various sites. The solution encompassed multiple complex features aimed at improving efficiency and automating manual processes. </p>
+            <h4>Key Features:</h4>
+            <p>
+                <ul>
+                    <li><strong>Real-Time Scheduling::</strong> Automated scheduling of officers for various sites, ensuring that duties were assigned efficiently and in real-time. </li>
+                    <li><strong>Notifications:</strong> Officers and site managers received notifications regarding duty schedules, check-ins, check-outs, and leave approvals. </li>
+                    <li><strong>Reports Generation:</strong> Generated detailed reports on officer duties, attendance, and overall site performance. </li>
+                    <li><strong>Messaging:</strong> Included messaging features for seamless communication between officers and site managers. </li>
+                    <li><strong>Officer Pre-check-in/Check-in/Check-out (Mobile App):</strong> Handled backend logic for officer check-in and check-out, integrated with a mobile app. </li>
+                    <li><strong>Leave Management System:</strong> Leave requests, approval workflows, and tracking. </li>
+                    <li><strong>Screening and Vetting for Signup:</strong> Introduced a sign-up process that required thorough vetting and approval before officers could join. </li>
+                </ul>
+            </p>
+            <h4>User Authentication and Permissions:</h4>
+            <p> This system was built around a role-based access control (RBAC) mechanism. Different users, such as officers, site managers, and admins, had specific roles with varying levels of access to features. Authentication was handled via token-based security, ensuring secure access to the system, while permissions were tightly managed according to user roles. </p>
+            <h4>Challenges and Data Synchronization:</h4>
+            <p> Managing real-time data and synchronizing across the mobile app and web interface posed a challenge. However, the use of caching (e.g., Redis) and optimized database queries ensured that all actions—scheduling, notifications, and reports—were reflected instantly across the system. Additionally, managing heavy traffic during peak check-in/out times was optimized using load balancing. </p>
         </div>
     </div>
-    <!-- Video Modal End -->
 
-
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-                    <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/profile.jpg" alt="">
-                </div> -->
-                <div class="col-lg-7 text-center text-lg-left">
-                    <h3 class="text-grey font-weight-normal mb-3">I'm</h3>
-                    <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff; font-size: 45pt;">Syed Mahad Ehsan</h1>
-                    <h1 class="typed-text-output d-inline font-weight-lighter text-grey"></h1>
-                    <div class="typed-text d-none"> Software Developer, Web Developer, Full Stack Developer, Apps Developer</div>
-                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                        <a href="" class="btn btn-outline-light mr-5">Download CV</a>
-                        <!-- <button type="button" class="btn-play" data-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
-                            <span></span>
-                        </button>
-                        <h5 class="font-weight-normal text-grey m-0 ml-4 d-none d-sm-block">Play Video</h5> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-
-
-    <!-- About Start -->
-    <div class="container-fluid py-5" id="about">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-grey text-border">About</h1>
-                <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-5 pb-4 pb-lg-0">
-                    <img class="img-fluid rounded w-100" src="img/about.jpg" alt="">
-                </div>
-                <div class="col-lg-7">
-                    <h3 class="mb-4">Software Developer & Web Developer</h3>
-                    <div class="row mb-3">
-                        <div class="col-sm-6 py-2"><h6><b>Name:</b> <span class="text-primary">Syed Mahad Ehsan</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6><b>Email:</b> <span class="text-primary">mahad.ehsan@gmail.com</span></h6></div>
-                    </div>
-                    <p class="text-primary">
-                        Hi there, I'm Syed Mahad Ehsan, a professional software developer with 2 years of experience working on Python and Django. I'm passionate about building web applications that solve real-world problems and improve the user experience.
-                    </p>
-                    <p class="text-primary">
-                        Throughout my career, I've worked on a variety of projects, from small prototypes to large-scale applications. I have a deep understanding of the Python language and its ecosystem, as well as a strong knowledge of software engineering principles and best practices. I'm also experienced in front-end development with HTML, CSS, and JavaScript, and have worked with popular front-end frameworks such as React.
-                    </p>
-                    <p class="text-primary">
-                        My strengths include problem-solving, collaboration, and attention to detail. I'm committed to delivering high-quality code that meets the needs of my clients and users, and I'm always looking for ways to improve my skills and learn new technologies.
-                    </p>
-                    <p class="text-primary">
-                        If you're looking for a software developer with experience in Python and Django, or you have a project that you'd like to discuss, I'd love to hear from you. Please don't hesitate to get in touch.
-                    </p>
-                    <!-- <div class="row mb-3"> -->
-                        <!-- <div class="col-sm-6 py-2"><h6><b>Name:</b> <span class="text-primary">Syed Mahad Ehsan</span></h6></div> -->
-                        <!-- <div class="col-sm-6 py-2"><h6><b>Birthday:</b> <span class="text-primary">17 August 1996</span></h6></div> -->
-                        <!-- <div class="col-sm-6 py-2"><h6><b>Degree:</b> <span class="text-primary">Bachelors in Computer Science</span></h6></div> -->
-                        <!-- <div class="col-sm-6 py-2"><h6>Experience: <span class="text-primary">1.5 Years</span></h6></div> -->
-                        <!-- <div class="col-sm-6 py-2"><h6>Phone: <span class="text-primary">+923422170411</span></h6></div> -->
-                        <!-- <div class="col-sm-6 py-2"><h6><b>Email:</b> <span class="text-primary">mahad.ehsan@gmail.com</span></h6></div> -->
-                        <!-- <div class="col-sm-6 py-2"><h6>Address: <span class="text-primary">123 Street, New York, USA</span></h6></div> -->
-                        <!-- <div class="col-sm-6 py-2"><h6><b>Freelance:</b> <span class="text-primary">Available</span></h6></div> -->
-                    <!-- </div> -->
-                    <a href="" class="btn btn-outline-primary mr-4">Hire Me</a>
-                    <!-- <a href="" class="btn btn-outline-primary">Learn More</a> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-
-    <!-- Qualification Start -->
-    <div class="container-fluid py-5" id="qualification">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-grey text-border">Quality</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Education & Expericence</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="mb-4">My Education</h2>
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h4 class="font-weight-bold mb-1">Bachelors In Computer Science</h4>
-                            <p class="mb-2 text-primary"><strong>DHA Suffa University</strong> | <small>2017 - 2020</small></p>
-                            <p class="text-primary">Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="mb-4">My Expericence</h2>
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h4 class="font-weight-bold mb-1">Software Developer</h4>
-                            <p class="mb-2 text-primary"><strong>KNYSYS</strong> | <small>2021 - Present</small></p>
-                            <p class="text-primary">Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-                            <h4 class="font-weight-bold mb-1">Full Stack Developer Intern</h4>
-                            <p class="mb-2 text-primary"><strong>Bitrupt</strong> | <small>2019</small></p>
-                            <p class="text-primary">Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Qualification End -->
-
-
-    <!-- Skill Start -->
-    <div class="container-fluid py-5" id="skill">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-grey text-border">Skills</h1>
-                <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
-            </div>
-        </div>
-        <div class="skills-carousel">
-            <div class="slider owl-carousel">
-                <div class="card">
-                    <div class="carousel-img">
-                        <img src="img\python.png" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="title">
-                            Python
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="carousel-img">
-                        <img src="img\django.png" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="title">
-                            Django
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="carousel-img">
-                        <img src="img\react.png" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="title">
-                            React
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="carousel-img">
-                        <img src="img\javascript.png" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="title">
-                            JavaScript
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" style="width: 400px;">
-                    <div class="carousel-img">
-                        <img src="img\mysql.png" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="title">
-                            MySQL
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- Skill End -->
-
-
-    <!-- Services Start -->
-    <div class="container-fluid pt-5" id="service">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-grey text-border">Service</h1>
-                <h1 class="position-absolute text-uppercase text-primary">My Services</h1>
-            </div>
-            <div class="row pb-3">
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-laptop service-icon bg-primary text-grey mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Software Development</h4>
-                    </div>
-                    <p class="text-primary">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet labore eirmod erat clita</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-grey mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Web Development</h4>
-                    </div>
-                    <p class="text-primary">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet labore eirmod erat clita</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
-                </div>
-                <!-- <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fab fa-2x fa-android service-icon bg-primary text-grey mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Apps Design</h4>
-                    </div>
-                    <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet labore eirmod erat clita</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
-                </div> -->
-                <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fab fa-2x fa-apple service-icon bg-primary text-grey mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Apps Development</h4>
-                    </div>
-                    <p class="text-primary">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet labore eirmod erat clita</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
-                </div>
-                <!-- <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-search service-icon bg-primary text-grey mr-3"></i>
-                        <h4 class="font-weight-bold m-0">SEO</h4>
-                    </div>
-                    <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet labore eirmod erat clita</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
-                </div> -->
-                <!-- <div class="col-lg-4 col-md-6 text-center mb-5">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <i class="fa fa-2x fa-edit service-icon bg-primary text-grey mr-3"></i>
-                        <h4 class="font-weight-bold m-0">Content Creating</h4>
-                    </div>
-                    <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet labore eirmod erat clita</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
-                </div> -->
-            </div>
-        </div>
-    </div>
-    <!-- Services End -->
-
-
-    <!-- Portfolio Start -->
-    <div class="container-fluid pt-5 pb-3" id="portfolio">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-grey text-border">Gallery</h1>
-                <h1 class="position-absolute text-uppercase text-primary">My Portfolio</h1>
-            </div>
-            <div class="row">
-                <div class="col-12 text-center mb-2">
-                    <ul class="list-inline mb-4" id="portfolio-flters">
-                        <li class="btn btn-sm btn-outline-primary m-1 active"  data-filter="*">All</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Design</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Development</li>
-                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".third">Marketing</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row portfolio-container">
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-1.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-grey" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-2.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-grey" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-3.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-grey" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-4.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-grey" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-5.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-grey" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
-                    <div class="position-relative overflow-hidden mb-2">
-                        <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="">
-                        <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-                            <a href="img/portfolio-6.jpg" data-lightbox="portfolio">
-                                <i class="fa fa-plus text-grey" style="font-size: 60px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid py-5" id="testimonial">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-grey text-border">Review</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Clients Say</h1>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="owl-carousel testimonial-carousel">
-                        <div class="text-center">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet accusam amet eirmod eos, labore diam clita</h4>
-                            <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-1.jpg" style="width: 80px; height: 80px;">
-                            <h5 class="font-weight-bold m-0">Client Name</h5>
-                            <span class="text-primary">Profession</span>
-                        </div>
-                        <div class="text-center">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet accusam amet eirmod eos, labore diam clita</h4>
-                            <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-                            <h5 class="font-weight-bold m-0">Client Name</h5>
-                            <span class="text-primary">Profession</span>
-                        </div>
-                        <div class="text-center">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <h4 class="font-weight-light mb-4">Dolor eirmod diam stet kasd sed. Aliqu rebum est eos. Rebum elitr dolore et eos labore, stet justo sed est sed. Diam sed sed dolor stet accusam amet eirmod eos, labore diam clita</h4>
-                            <img class="img-fluid rounded-circle mx-auto mb-3" src="img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-                            <h5 class="font-weight-bold m-0">Client Name</h5>
-                            <span class="text-primary">Profession</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
-
-    <!-- Blog Start -->
-    <!-- <div class="container-fluid pt-5" id="blog">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-grey" style="-webkit-text-stroke: 1px #dee2e6;">Blog</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Latest Blog</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/blog-1.jpg" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">01</h4>
-                            <small class="text-grey text-uppercase">Jan</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr ipsum</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2" href="">Read More</a>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/blog-2.jpg" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">01</h4>
-                            <small class="text-grey text-uppercase">Jan</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr ipsum</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2" href="">Read More</a>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/blog-3.jpg" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">01</h4>
-                            <small class="text-grey text-uppercase">Jan</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">Rebum lorem no eos ut ipsum diam tempor sed rebum elitr ipsum</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2" href="">Read More</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Blog End -->
-
-
-    <!-- Contact Start -->
-    <div class="container-fluid py-5" id="contact">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-grey text-border">Contact</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Contact Me</h1>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-form text-center">
-                        <div id="success"></div>
-                        <form class="form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScWXtypv8O-PpTSI9-sbBdf0KQxjYE7l7OZHZl67dYE4md3lg/formResponse">
-
-                            <div class="form-row">
-                                <div class="control-group col-sm-6">
-                                    <input name="entry.2005620554" type="text" class="form-control p-4" id="name" placeholder="Your Name" 
-                                        required="required" data-validation-required-message="Please enter your name" />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="control-group col-sm-6">
-                                    <input name="entry.1045781291" type="email" class="form-control p-4" id="email" placeholder="Your Email" 
-                                        required="required" data-validation-required-message="Please enter your email"/>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-            
-                            <div class="control-group">
-                                <input name="entry.157920615" type="text" class="form-control p-4" id="subject" placeholder="Subject"
-                                    required="required" data-validation-required-message="Please enter a subject" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-            
-                            <div class="control-group">
-                                <textarea name="entry.947272223" type="text" class="form-control py-3 px-4" rows="5" id="message" placeholder="Message"
-                                    required="required" data-validation-required-message="Please enter your message"></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-            
-                            <input class="btn btn-outline-primary" type="submit" value="Send Message" id="sendMessageButton" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Contact End -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-primary text-grey mt-5 py-5 px-sm-3 px-md-5">
-        <div class="container text-center py-5">
-            <div class="d-flex justify-content-center mb-4">
-                <a class="btn btn-light btn-social mr-2" href="https://twitter.com/Mahad_Ehsan"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://www.facebook.com/syed.mahad.ehsan/"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/syed-mahad-ehsan/"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-light btn-social" href="https://github.com/SyedMahad"><i class="fab fa-github"></i></a>
-            </div>
-            <div class="d-flex justify-content-center mb-3">
-                <a class="text-grey" href="#">Privacy</a>
-                <span class="px-3">|</span>
-                <a class="text-grey" href="#">Terms</a>
-                <span class="px-3">|</span>
-                <a class="text-grey" href="#">FAQs</a>
-                <span class="px-3">|</span>
-                <a class="text-grey" href="#">Help</a>
-            </div>
-            <!-- <p class="m-0">&copy; <a class="text-grey font-weight-bold" href="#">Domain Name</a>. All Rights Reserved. Designed by <a class="text-grey font-weight-bold" href="https://htmlcodex.com">HTML Codex</a> -->
+    <div id="project2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project2')">&times;</span>
+            <h3>Distributed System Architecture</h3>
+            <h4>Project Overview:</h4>
+            <p> This project focused on addressing the scalability challenges of a Django-based application serving over 10,000 users. The goal was to enhance the architecture to allow seamless growth without compromising performance. </p>
+            <h4>Problem Solved:</h4>
+            <p> The core issue was scalability. The existing infrastructure could not efficiently handle the growing number of users, leading to performance bottlenecks. </p>
+            <h4>Technologies and Approach:</h4>
+            <p>
+                <ul>
+                    <li><strong>Django:</strong> The core framework for the project. </li>
+                    <li><strong>Docker Containers:</strong> Used to separate services for modularity and easy scalability. </li>
+                    <li><strong>Azure VMSS (Virtual Machine Scale Sets):</strong> Enabled dynamic scaling of virtual machines based on traffic demands. </li>
+                    <li><strong>Azure Database for MySQL and MongoDB::</strong> MySQL was deployed on Azure, while MongoDB required a separate server since Azure did not offer out-of-the-box support for it. </li>
+                    <li><strong>Memcache:</strong> Deployed on a separate server for caching to improve response times. </li>
+                    <!-- <li><strong>Unified Connections:</strong> All virtual machine instances were connected to the same MySQL, MongoDB, and Memcache instances, ensuring consistency. </li> -->
+                </ul>
+                These improvements allowed the system to handle a larger load efficiently while optimizing costs through dynamic scaling.
+            </p>
+            <h4>Improvement to Existing Architecture:</h4>
+            <p> By transitioning to a distributed architecture, the project gained the following benefits: </p>
+            <p>
+                <ul>
+                    <li><strong>Improved Scalability:</strong> The use of VMSS and Docker containers allowed the system to scale dynamically as user traffic increased, ensuring high availability and performance. </li>
+                    <li><strong>Service Separation:</strong> Separating services like MySQL, MongoDB, and Memcache ensured that these resources were optimized and dedicated to specific tasks, reducing the load on individual instances. </li>
+                    <li><strong>Cost Efficiency:</strong> Dynamic scaling reduced operational costs by spinning up VMs only when needed, thereby optimizing resource utilization. </li>
+                </ul>
+                These improvements allowed the system to handle a larger load efficiently while optimizing costs through dynamic scaling.
             </p>
         </div>
     </div>
-    <script>
-        $(".slider").owlCarousel({
-          loop: true,
-          autoplay: true,
-          autoplayTimeout: 2000, //2000ms = 2s;
-          autoplayHoverPause: true,
-        });
 
-      </script>
-  
-    <!-- Footer End -->
+    <div id="project3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project3')">&times;</span>
+            <h3>Open edX Customization</h3>
+            <h4>Project Overview:</h4>
+            <p> This project involved customizing Open edX to transform it into a Software-as-a-Service (SaaS) platform, allowing multiple organizations to have their own uniquely branded learning platforms. Additional functionalities, like OTP authentication, were also integrated. </p>
+            <h4>Key Customizations:</h4>
+            <p>
+                <ul>
+                    <li><strong>SaaS Model:</strong> The core LMS was modified to support a multi-tenant structure, enabling different organizations to sign up and have exclusive themes. Each organization could customize their learning environment, creating a unique experience for their users. </li>
+                    <li><strong>OTP on User Login:</strong> Added an extra layer of security by implementing an OTP (One-Time Password) functionality during login, improving user security. </li>
+                    <li><strong>Custom Themes:</strong> Organizations were able to customize the look and feel of their LMS, resulting in a more personalized user experience. </li>
+                </ul>
+            </p>
+            <h4> Impact on User Experience: </h4>
+            <p>
+                <ul>
+                    <li><strong>Improved Personalization:</strong> The introduction of custom themes allowed each organization to offer a tailored experience for their users, aligning the platform’s design with their branding. </li>
+                    <li><strong>Enhanced Security:</strong> The OTP feature significantly improved login security, which was particularly beneficial for institutions handling sensitive data. </li>
+                    <li><strong>Ease of Access:</strong> The SaaS model made it easier for organizations to onboard and deploy their own LMS without needing to manage the backend infrastructure, making the platform more scalable and user-friendly. </li>
+                </ul>
+            </p>
+        </div>
+    </div>
 
-    <!-- Scroll to Bottom -->
-    <i class="fa fa-2x fa-angle-down text-grey scroll-to-bottom"></i>
+    <!-- Education Section -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>DHA Suffa University</h3>
+            <p>Bachelor of Science in Computer Science, 2016 - 2021</p>
+            <p>CGPA: 3.5</p>
+        </div>
+    </section>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <form action="https://formspree.io/f/xovaznkj" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="submit-btn">Send Message</button
+        </form>
+    </section>
 
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>

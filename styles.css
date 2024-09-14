@@ -1,0 +1,385 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Toggle Button */
+#modeToggle {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: #1e90ff; /* Bright blue background */
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1001; /* Ensure the button appears above other content */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for visibility */
+    border: none; /* Remove any border */
+    font-size: 20px; /* Set font size for icon */
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: #fcfcfc; /* Background color for light mode */
+    color: #000000; /* Text color for light mode */
+}
+
+/* Change heading color in light mode */
+body.light-mode h1, 
+body.light-mode h2, 
+body.light-mode h3 {
+    color: #000000; /* Black headings */
+}
+
+/* Change the background color for items in light mode */
+body.light-mode .skill-item, 
+body.light-mode .project-item, 
+body.light-mode .timeline-item, 
+body.light-mode .education-item,
+body.light-mode nav,
+body.light-mode nav .logo h1,
+body.light-mode nav ul li a,
+body.light-mode .modal-content,
+body.light-mode #hero {
+    background-color: #71b6fc;
+    color: #000000;
+}
+
+body.light-mode #contact form input,
+body.light-mode #contact form textarea {
+    background-color: lightgrey;
+    /* background-color: #71b6fc; */
+    color: #000000;
+}
+
+body.light-mode .project-item .project-link {
+    color: #000000;
+    text-decoration: underline;
+}
+
+body.light-mode .project-item .project-link:hover {
+    font-weight: bold;
+}
+
+body.light-mode .modal {
+    background-color: rgba(245, 245, 245, 0.7);
+}
+
+body.light-mode .modal-content .close{
+    color: #000000;
+}
+
+body.light-mode .modal-content .close:hover,
+body.light-mode nav ul li a:hover{
+    color: #ffffff;
+}
+
+/* Light Mode button style */
+body.light-mode #modeToggle,
+body.light-mode #contact form .submit-btn,
+body.light-mode #hero .cta-btn {
+    background-color: #444; /* Change button color in light mode */
+    color: white;
+}
+
+body.light-mode #modeToggle:hover,
+body.light-mode #contact form .submit-btn:hover,
+body.light-mode #hero .cta-btn:hover {
+    background-color: #333; /* Change button color in light mode */
+}
+
+
+nav {
+    background-color: #333;
+    position: fixed;
+    width: 98%;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #1e90ff;
+}
+
+/* Responsive navbar */
+.hamburger {
+    display: none;
+    margin-right: 30px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: -150%;
+        width: 90%;
+        height: 100vh;
+        background-color: #333;
+        transition: left 0.3s ease;
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+
+    nav ul li {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+section {
+    padding: 20px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Centering all headings (h2, h3, etc.) */
+h2, h3 {
+    text-align: center;
+}
+
+/* Optionally, you can center smaller headings too */
+/* h4, h5, h6 {
+    text-align: center;
+} */
+
+/* Blue underline for all h2 elements */
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #1e90ff;
+    padding-bottom: 10px;
+}
+
+/* Ensure content inside modal is left-aligned by default */
+.modal-content {
+    text-align: center; /* Keep the rest of the content left-aligned */
+}
+
+/* Center only the modal h3 headings */
+.modal-content h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #1e90ff;
+    padding-bottom: 10px;
+    display: inline-block;
+    width: auto; /* Ensure the width is auto for proper centering */
+    text-align: center; /* Ensure the text is centered */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Reset text alignment for the rest of the content */
+.modal-content p, .modal-content h4, .modal-content ul {
+    text-align: left; /* Ensure paragraphs and lists stay left-aligned */
+}
+
+#hero {
+    margin-top: 15vh;
+    height: 60vh;
+    width: 100vw;
+    padding: 0;
+    /* background: url('background.jpg') no-repeat center center/cover; */
+    /* background-size: cover; */
+    background-color: #333;
+    /* outline: 5px solid #1e90ff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+
+    color: white;
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, rgb(0, 183, 255), rgb(119, 0, 255)) 1;
+}
+
+#hero .hero-content h1 {
+    font-size: 48px;
+}
+
+#hero .cta-btn {
+    background-color: #1e90ff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+#skills .skills-grid, #projects .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.skill-item, .project-item, .timeline-item, .education-item {
+    background-color: #333;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.skill-item:hover, .project-item:hover, .timeline-item:hover, .education-item:hover {
+    outline: 2px solid #1e90ff; /* Blue outline on hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+.skill-item i {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.project-item .project-link {
+    display: block;
+    margin-top: 10px;
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact form input, #contact form textarea {
+    background-color: #333;
+    color: #ffffff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+#contact form input:focus, #contact form textarea:focus {
+    outline: 2px solid #1e90ff; /* Blue outline on focus */
+}
+
+#contact form .submit-btn {
+    background-color: #1e90ff;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#contact form .submit-btn:hover, #hero .cta-btn:hover, #modeToggle:hover {
+    background-color: #1c7ccc;
+}
+
+/* Floating Social Media Icons */
+.social-links {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #1e90ff;
+    padding: 10px;
+    border-radius: 0 10px 10px 0;
+}
+
+.social-links a {
+    display: block;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.social-links a i {
+    font-size: 24px;
+}
+
+.social-links:hover {
+    padding: 15px;
+}
+
+.social-links a:hover {
+    background-color: #ffffff;
+    color: #1e90ff;
+    padding: 3px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #333;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #1e90ff;
+    width: 60%;
+    border-radius: 10px;
+}
+
+.modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-content .close:hover {
+    color: #fff;
+    cursor: pointer;
+}
