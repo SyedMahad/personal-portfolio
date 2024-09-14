@@ -65,3 +65,8 @@ function toggleMode() {
         icon.classList.add('fa-moon'); // Change to moon icon for light mode
     }
 }
+
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}

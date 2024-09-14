@@ -40,16 +40,38 @@ body.light-mode .skill-item,
 body.light-mode .project-item, 
 body.light-mode .timeline-item, 
 body.light-mode .education-item,
+body.light-mode nav,
+body.light-mode nav .logo h1,
+body.light-mode nav ul li a,
 body.light-mode #hero {
     background-color: #1e90ff; /* Blue background */
-    /* color: #000000; */
+    color: #000000;
+}
+
+body.light-mode #contact form input,
+body.light-mode #contact form textarea {
+    background-color: lightgrey; /* Blue background */
+    color: #000000;
+}
+
+body.light-mode nav ul li a:hover{
+    color: #ffffff;
 }
 
 /* Light Mode button style */
-body.light-mode #modeToggle {
-    background-color: #333; /* Change button color in light mode */
+body.light-mode #modeToggle,
+body.light-mode #contact form .submit-btn,
+body.light-mode #hero .cta-btn {
+    background-color: #444; /* Change button color in light mode */
     color: white;
 }
+
+body.light-mode #modeToggle:hover,
+body.light-mode #contact form .submit-btn:hover,
+body.light-mode #hero .cta-btn:hover {
+    background-color: #333; /* Change button color in light mode */
+}
+
 
 nav {
     background-color: #333;
@@ -86,6 +108,41 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #1e90ff;
+}
+
+/* Responsive navbar */
+.hamburger {
+    display: none;
+    margin-right: 30px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: -150%;
+        width: 90%;
+        height: 100vh;
+        background-color: #333;
+        transition: left 0.3s ease;
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+
+    nav ul li {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
 
 section {
@@ -259,6 +316,10 @@ h2 {
 
 .social-links a i {
     font-size: 24px;
+}
+
+.social-links:hover {
+    padding: 15px;
 }
 
 .social-links a:hover {
