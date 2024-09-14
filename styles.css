@@ -43,17 +43,37 @@ body.light-mode .education-item,
 body.light-mode nav,
 body.light-mode nav .logo h1,
 body.light-mode nav ul li a,
+body.light-mode .modal-content,
 body.light-mode #hero {
-    background-color: #1e90ff; /* Blue background */
+    background-color: #71b6fc;
     color: #000000;
 }
 
 body.light-mode #contact form input,
 body.light-mode #contact form textarea {
-    background-color: lightgrey; /* Blue background */
+    background-color: lightgrey;
+    /* background-color: #71b6fc; */
     color: #000000;
 }
 
+body.light-mode .project-item .project-link {
+    color: #000000;
+    text-decoration: underline;
+}
+
+body.light-mode .project-item .project-link:hover {
+    font-weight: bold;
+}
+
+body.light-mode .modal {
+    background-color: rgba(245, 245, 245, 0.7);
+}
+
+body.light-mode .modal-content .close{
+    color: #000000;
+}
+
+body.light-mode .modal-content .close:hover,
 body.light-mode nav ul li a:hover{
     color: #ffffff;
 }
