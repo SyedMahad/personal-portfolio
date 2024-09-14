@@ -143,12 +143,17 @@ h2 {
     /* background: url('background.jpg') no-repeat center center/cover; */
     /* background-size: cover; */
     background-color: #333;
-    outline: 5px solid #1e90ff; /* Blue outline on hover */
+    /* outline: 5px solid #1e90ff; */
     display: flex;
     justify-content: center;
     align-items: center;
     color: #ffffff;
     text-align: center;
+
+    color: white;
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, rgb(0, 183, 255), rgb(119, 0, 255)) 1;
 }
 
 #hero .hero-content h1 {
@@ -274,6 +279,7 @@ h2 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
 }
 
 .modal-content {
