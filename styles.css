@@ -754,6 +754,7 @@ h1 em {
 }
 
 .fix-intro {
+    max-width: 64ch;
     color: var(--fg-dim);
     font-size: 1rem;
     line-height: 1.6;
@@ -1300,6 +1301,319 @@ section {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     flex: none;
+}
+
+/* ---------- STICKY SIDEBAR ---------- */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--surface-2);
+    border: 1px solid var(--line-strong);
+    border-left: none;
+    color: var(--fg-dim);
+    transition: background .2s ease, color .2s ease;
+}
+
+.sidebar a:first-child {
+    border-radius: 0 8px 0 0
+}
+
+.sidebar a:last-child {
+    border-radius: 0 0 8px 0
+}
+
+.sidebar a:hover {
+    background: var(--signal);
+    color: #0A0E14
+}
+
+.sidebar svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor
+}
+
+@media(max-width:520px) {
+    .sidebar {
+        display: none
+    }
+}
+
+/* ---------- THEME TOGGLE ---------- */
+.theme-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 40;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
+    color: var(--fg-dim);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:hover {
+    background: var(--signal);
+    color: #0A0E14;
+    border-color: var(--signal)
+}
+
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+.theme-toggle .icon-moon {
+    display: block
+}
+
+.theme-toggle .icon-sun {
+    display: none
+}
+
+/* ---------- LIGHT THEME ---------- */
+html.light {
+    --ink: #F7F4EF;
+    --ink-2: #FFFFFF;
+    --surface: #EDE9E1;
+    --surface-2: #E2DDD5;
+    --line: rgba(60, 50, 35, 0.10);
+    --line-strong: rgba(60, 50, 35, 0.18);
+    --grid: rgba(80, 65, 40, 0.055);
+    --fg: #1C2333;
+    --fg-dim: #3A4255;
+    --muted: #7A7D8A;
+    --signal: #B06E00;
+    --signal-bright: #8F5800;
+    --signal-soft: rgba(176, 110, 0, 0.09);
+    --signal-line: rgba(176, 110, 0, 0.25);
+}
+
+/* warmer grid tint */
+html.light body {
+    background: var(--ink);
+}
+
+html.light body::before {
+    background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(ellipse 130% 100% at 50% 0%, #000 25%, transparent 85%);
+    mask-image: radial-gradient(ellipse 130% 100% at 50% 0%, #000 25%, transparent 85%);
+}
+
+html.light ::selection {
+    background: var(--signal);
+    color: #fff;
+}
+
+/* nav: warm frosted glass */
+html.light nav {
+    background: linear-gradient(to bottom, rgba(247, 244, 239, 0.92), rgba(247, 244, 239, 0.65));
+    border-bottom-color: rgba(60, 50, 35, 0.10);
+}
+
+/* hero pipeline */
+html.light .pipe {
+    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.5));
+    border-color: rgba(60, 50, 35, 0.12);
+}
+
+html.light .node {
+    background: var(--ink);
+    border-color: rgba(60, 50, 35, 0.15);
+}
+
+html.light .node.lit {
+    background: #fff;
+    border-color: var(--signal-line);
+}
+
+html.light .track-line {
+    stroke: rgba(60, 50, 35, 0.12);
+}
+
+html.light .track-flow {
+    stroke: var(--signal);
+    filter: drop-shadow(0 0 5px rgba(176, 110, 0, 0.30));
+}
+
+html.light .pipe:hover {
+    border-color: rgba(60, 50, 35, 0.20);
+    box-shadow: 0 0 20px rgba(176, 110, 0, 0.05);
+}
+
+/* telemetry */
+html.light .telemetry {
+    background: #fff;
+    border-color: rgba(60, 50, 35, 0.10);
+}
+
+html.light .stat {
+    border-right-color: rgba(60, 50, 35, 0.10);
+}
+
+html.light .stat:hover {
+    background: var(--ink);
+}
+
+/* job cards */
+html.light .job {
+    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.6));
+}
+
+/* case studies */
+html.light .case {
+    background: #fff;
+}
+
+html.light .case-side {
+    background: linear-gradient(180deg, var(--ink), rgba(247, 244, 239, 0.3));
+    border-right-color: rgba(60, 50, 35, 0.10);
+}
+
+/* fixes */
+html.light .fix {
+    background: #fff;
+}
+
+html.light .fix-side {
+    background: linear-gradient(180deg, var(--ink), rgba(247, 244, 239, 0.3));
+    border-right-color: rgba(60, 50, 35, 0.10);
+}
+
+html.light .ba {
+    background: var(--ink);
+}
+
+/* capabilities grid */
+html.light .caps {
+    background: rgba(60, 50, 35, 0.08);
+}
+
+html.light .cap-cell {
+    background: #fff;
+}
+
+html.light .cap-cell:hover {
+    background: var(--ink);
+}
+
+/* projects */
+html.light .proj {
+    background: #fff;
+}
+
+/* stack */
+html.light .stack-row {
+    background: #fff;
+}
+
+html.light .stack-row:hover {
+    background: var(--ink);
+}
+
+/* bg cards */
+html.light .bg-card {
+    background: #fff;
+}
+
+/* contact */
+html.light .contact {
+    background: radial-gradient(120% 140% at 50% -20%, rgba(176, 110, 0, 0.07), transparent 60%), #fff;
+    border-color: rgba(60, 50, 35, 0.12);
+}
+
+/* form inputs */
+html.light .cform input,
+html.light .cform textarea {
+    background: var(--ink);
+    border-color: rgba(60, 50, 35, 0.15);
+    color: var(--fg);
+}
+
+html.light .cform input:focus,
+html.light .cform textarea:focus {
+    border-color: var(--signal);
+    box-shadow: 0 0 0 3px var(--signal-soft);
+}
+
+/* sidebar */
+html.light .sidebar a {
+    background: #fff;
+    border-color: rgba(60, 50, 35, 0.14);
+}
+
+html.light .sidebar a:hover {
+    background: var(--signal);
+    color: #fff;
+}
+
+/* buttons */
+html.light .btn-primary {
+    color: #fff;
+}
+
+html.light .btn-primary:hover {
+    color: #fff;
+}
+
+html.light .btn-ghost {
+    border-color: rgba(60, 50, 35, 0.18);
+}
+
+/* theme toggle */
+html.light .theme-toggle {
+    background: #fff;
+    border-color: rgba(60, 50, 35, 0.14);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+html.light .theme-toggle:hover {
+    background: var(--signal);
+    color: #fff;
+    border-color: var(--signal);
+}
+
+html.light .theme-toggle .icon-moon {
+    display: none;
+}
+
+html.light .theme-toggle .icon-sun {
+    display: block;
+}
+
+/* footer */
+html.light footer {
+    background: var(--surface);
+    border-top-color: rgba(60, 50, 35, 0.10);
 }
 
 /* ---------- FOOTER ---------- */

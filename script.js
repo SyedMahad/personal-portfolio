@@ -1,15 +1,7 @@
 // scroll reveal
 const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) {
-            e.target.classList.add('in');
-            io.unobserve(e.target);
-        }
-    });
-}, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-});
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // pipeline node lighting: sweep in sync with the flowing signal
@@ -56,5 +48,19 @@ if (cform) {
         } catch (err) {
             setStatus('Something went wrong. Please email mahad.ehsan@gmail.com', true);
         }
+    });
+}
+
+// theme toggle: respects saved preference, falls back to OS preference
+const toggle = document.querySelector('.theme-toggle');
+if (toggle) {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light' || (!saved && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.add('light');
+    }
+    toggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('light');
+        const isLight = document.documentElement.classList.contains('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 }
