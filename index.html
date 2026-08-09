@@ -1,307 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Syed Mahad Ehsan, a skilled Software Developer specializing in Python and Django.">
-    <meta name="keywords" content="Portfolio, Syed Mahad Ehsan, Software Developer, Python, Django, React, AWS, Azure">
-    <meta name="author" content="Syed Mahad Ehsan">
 
-    <title>Syed Mahad Ehsan - Portfolio</title>
-    <!-- Add the favicon -->
-    <link rel="icon" href="Logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Senior Backend Software Engineer specializing in Python, Django, DRF, Celery, Redis and AWS. I build multi-tenant SaaS backends that scale and stay up." />
+    <meta name="keywords"
+        content="Portfolio, Syed Mahad Ehsan, Senior Backend Engineer, Python, Django, DRF, Celery, Redis, AWS, SaaS" />
+    <meta name="author" content="Syed Mahad Ehsan" />
+    <meta name="theme-color" content="#0A0E14" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://mahadehsan.com/" />
+
+    <title>Syed Mahad Ehsan · Senior Backend Engineer</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Syed Mahad Ehsan · Senior Backend Engineer" />
+    <meta property="og:description"
+        content="Senior Backend Software Engineer specializing in Python, Django, DRF, Celery, Redis and AWS. 5+ years building multi-tenant SaaS backends that scale." />
+    <meta property="og:url" content="https://mahadehsan.com/" />
+    <meta property="og:site_name" content="Syed Mahad Ehsan" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Syed Mahad Ehsan · Senior Backend Engineer" />
+    <meta name="twitter:description"
+        content="Senior Backend Software Engineer specializing in Python, Django, DRF, Celery, Redis and AWS. 5+ years building multi-tenant SaaS backends that scale." />
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'><rect%20width='32'%20height='32'%20rx='7'%20fill='%230A0E14'/><line%20x1='6'%20y1='16'%20x2='26'%20y2='16'%20stroke='%23F5A524'%20stroke-width='2'/><circle%20cx='16'%20cy='16'%20r='4'%20fill='%230A0E14'%20stroke='%23F5A524'%20stroke-width='2'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
 
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Syed Mahad Ehsan",
-            "url": "https://your-website-url.com",
-            "sameAs": [
-                "https://www.linkedin.com/in/syed-mahad-ehsan/",
-                "https://github.com/SyedMahad"
-            ],
-            "jobTitle": "Software Developer",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "Diya Interactive"
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://mahadehsan.com/#website",
+                "url": "https://mahadehsan.com/",
+                "name": "Syed Mahad Ehsan",
+                "description": "Portfolio of Syed Mahad Ehsan, Senior Backend Software Engineer"
+            },
+            {
+                "@type": "Person",
+                "@id": "https://mahadehsan.com/#person",
+                "name": "Syed Mahad Ehsan",
+                "url": "https://mahadehsan.com",
+                "jobTitle": "Senior Backend Software Engineer",
+                "description": "Senior Backend Software Engineer with 5+ years building multi-tenant B2B SaaS platforms using Python, Django, DRF, Celery, Redis, and AWS.",
+                "knowsAbout": [
+                    "Python", "Django", "Django REST Framework", "Celery", "Redis",
+                    "PostgreSQL", "AWS", "REST API Design", "Multi-Tenant SaaS",
+                    "Asynchronous Processing", "CI/CD", "Docker", "FastAPI"
+                ],
+                "hasCredential": [
+                    {
+                        "@type": "EducationalOccupationalCredential",
+                        "name": "B.S. Computer Science",
+                        "credentialCategory": "degree",
+                        "recognizedBy": {
+                            "@type": "Organization",
+                            "name": "DHA Suffa University"
+                        }
+                    }
+                ],
+                "alumniOf": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "DHA Suffa University",
+                    "location": "Karachi, Pakistan"
+                },
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Diya Interactive"
+                },
+                "sameAs": [
+                    "https://www.linkedin.com/in/syed-mahad-ehsan/",
+                    "https://github.com/SyedMahad"
+                ]
             }
-        }
+        ]
+    }
     </script>
 </head>
+
 <body>
-    <!-- Toggle Light/Dark Mode Button with Icon -->
-    <button id="modeToggle" onclick="toggleMode()">
-        <i id="toggleIcon" class="fas fa-sun"></i>
-    </button>
 
-    <!-- Floating Social Media Buttons -->
-    <div class="social-links">
-        <a href="https://www.linkedin.com/in/syed-mahad-ehsan/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/SyedMahad" target="_blank"><i class="fab fa-github"></i></a>
-        <!-- <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a> -->
-    </div>
-
-    <!-- Navigation Bar -->
-    <nav id="navbar">
-        <div class="logo">
-            <h1>Syed Mahad Ehsan</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#work">Work Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="Syed Mahad Ehsan's Resume.pdf" target="_blank" class="resume-btn" download>Download Resume</a></li>
-        </ul>
-        <!-- Hamburger menu icon for small screens -->
-        <div class="hamburger" onclick="toggleMenu()">
-            <i id="hamburger" class="fas fa-bars"></i>
+    <nav>
+        <div class="nav-inner">
+            <a href="#top" class="brand"><span class="tag">SME</span> Syed Mahad Ehsan</a>
+            <div class="nav-links">
+                <a href="#work">/work</a>
+                <a href="#systems">/systems</a>
+                <a href="#fixes">/fixes</a>
+                <a href="#stack">/stack</a>
+                <a href="#contact">/contact</a>
+                <span class="nav-sep"></span>
+                <a class="ext" href="https://github.com/SyedMahad" target="_blank" rel="noopener">github</a>
+                <a class="ext" href="https://linkedin.com/in/syed-mahad-ehsan" target="_blank"
+                    rel="noopener">linkedin</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Parallax Hero Section -->
-    <section id="hero">
-        <div class="hero-content">
-            <h1> Software Developer </h1>
-            <p>Building scalable and efficient software systems</p>
-            <a href="#projects" class="cta-btn">View My Projects</a>
-        </div>
-    </section>
+    <header id="top">
+        <div class="wrap">
+            <div class="eyebrow"><span class="pulse"></span> available · karachi (utc+5) · remote &amp; onsite</div>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I'm Syed Mahad Ehsan, a passionate Software Developer with over 3 years of experience in designing and building scalable, high-performance software systems. I specialize in Python and Django and have worked on a wide range of projects, from small-scale applications to large, distributed systems serving thousands of users. My strong technical foundation allows me to build reliable, secure, and efficient solutions, ensuring seamless user experiences.
-        </p>
-        <p>
-            Over the course of my career, I have worked with teams to develop SaaS products, implement RESTful APIs, optimize database queries, and handle complex server-side logic. I have a deep understanding of the full software development lifecycle, including architecture design, development, testing, deployment, and maintenance.
-        </p>
-        <p>
-            In addition to my technical expertise, I’m highly focused on delivering clean, maintainable code and have a keen interest in learning new technologies and best practices. I’m comfortable working in cloud environments such as AWS and Azure, and I have experience with containerization tools like Docker, enabling me to build and deploy applications that scale dynamically.
-        </p>
-        <p>
-            When I’m not coding, I’m constantly expanding my knowledge through personal projects, contributing to open-source software, and engaging with the tech community. I’m always looking for ways to enhance my skill set and collaborate with like-minded professionals to build innovative and impactful solutions.
-        </p>
-    </section>
-    
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <i class="fas fa-code"></i>
-                <h3>Programming Languages</h3>
-                <p>Python, JavaScript</p>
+            <h1>The backend is the product no one sees. I keep it <em>fast, reliable, and hard to break.</em></h1>
+
+            <p class="lede">Senior backend engineer with 5+ years building multi-tenant B2B SaaS. I own the scheduling
+                engines, async pipelines, and caching layers that hold up when the request count climbs and the SLA
+                doesn't move.</p>
+
+            <p class="stackline"><b>Python</b> · Django · DRF · Celery · Redis · PostgreSQL · <b>AWS</b></p>
+
+            <div class="hero-cta">
+                <a class="btn btn-primary" href="mailto:mahad.ehsan@gmail.com">→ get in touch</a>
+                <a class="btn btn-ghost" href="https://www.mahadehsan.com/Syed%20Mahad%20Ehsan%27s%20Resume.pdf"
+                    target="_blank" rel="noopener">download résumé (pdf)</a>
             </div>
-            <div class="skill-item">
-                <i class="fas fa-cogs"></i>
-                <h3>Frameworks</h3>
-                <p>Django, Flask, React, React Native</p>
+
+            <!-- signature: request pipeline -->
+            <div class="pipe">
+                <div class="pipe-label"><span>request lifecycle</span><span>live</span></div>
+                <div class="pipe-track">
+                    <svg viewBox="0 0 1000 48" preserveAspectRatio="none" aria-hidden="true">
+                        <path class="track-line" d="M40 24 H960" />
+                        <path class="track-flow" d="M40 24 H960" />
+                    </svg>
+                    <div class="pipe-nodes">
+                        <span class="node">client</span>
+                        <span class="node">api</span>
+                        <span class="node lit">cache</span>
+                        <span class="node lit">queue</span>
+                        <span class="node">db</span>
+                    </div>
+                </div>
             </div>
-            <div class="skill-item">
-                <i class="fas fa-database"></i>
-                <h3>Databases</h3>
-                <p>MySQL, PostgreSQL, MongoDB, DynamoDB</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-cloud"></i>
-                <h3>Cloud Services</h3>
-                <p>AWS, GCP, Azure Cloud Services</p>
+
+            <!-- telemetry -->
+            <div class="telemetry">
+                <div class="stat">
+                    <div class="num">268<i>+</i></div>
+                    <div class="cap">URL patterns owned</div>
+                </div>
+                <div class="stat">
+                    <div class="num">32</div>
+                    <div class="cap">DRF ViewSets</div>
+                </div>
+                <div class="stat">
+                    <div class="num">~11</div>
+                    <div class="cap">async job pipelines</div>
+                </div>
+                <div class="stat">
+                    <div class="num">5<i>yr</i></div>
+                    <div class="cap">shipping to prod</div>
+                </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Work Experience Section -->
     <section id="work">
-        <h2>Work Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Software Engineer | Diya Interactive</h3>
-                <span>June 2023 - Present</span>
-                <p>Working on a SaaS product. Designed and developed RESTful APIs, Django views, and cron jobs. </p>
-                <p><strong>Technologies used:</strong> Python, Django, MySQL (Amazon RDS), Amazon S3, Amazon EC2, and Amazon EBS (Elastic Beanstalk). </p>
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="route">/work</span>
+                <h2>Selected work</h2>
+                <span class="meta">3 roles · 2020 → now</span>
             </div>
-            <div class="timeline-item">
-                <h3>Associate Software Developer | KNYSYS, LLC</h3>
-                <span>September 2022 - May 2023</span>
-                <p>Developed a distributed system, designed RESTful APIs, Django views, cron jobs, and Celery tasks. </p>
-                <p><strong>Technologies used:</strong> Python, Django, MySQL, PostgreSQL, MongoDB, DynamoDB, Azure Cloud Services, AWS Lambda, and Docker. </p>
+
+            <div class="job reveal">
+                <div class="job-top">
+                    <span class="job-co">Diya Interactive</span>
+                    <span class="job-loc">Karachi, PK</span>
+                    <span class="job-when">Jun 2023 – Present</span>
+                </div>
+                <div class="job-roles">Senior Software Engineer &nbsp;·&nbsp; ex-Software Engineer &nbsp;·&nbsp;
+                    security workforce SaaS</div>
+                <ul>
+                    <li>Owned <b>~11 backend modules</b> across <span class="m">12–15</span> features: scheduling, time
+                        &amp; attendance, SIA compliance, invoicing, payroll, biometric auth, and real-time officer
+                        geolocation.</li>
+                    <li>Worked a large API surface: <span class="m">268+</span> Django URL patterns and <span
+                            class="m">32</span> DRF router ViewSets, plus auto-generated CRUD and custom-action routes.
+                    </li>
+                    <li>Built and maintained <span class="m">~11</span> Redis/Celery scheduled jobs plus on-demand
+                        tasks: 30–60s attendance polling, auto-checkout, license-expiry, compliance, and SIA sync.</li>
+                    <li>Refactored the check-call notification engine onto a proper scheduler with <b>is_latest
+                            filtering</b> and <b>select_related</b>, killing duplicate firing and N+1 patterns across
+                        growing patrol backlogs.</li>
+                    <li>Shipped async bulk shift-scheduling generating up to <span class="m">1,000</span> tiles per
+                        batch with all-or-nothing transactions and Redis-backed progress polling.</li>
+                    <li>Moved CSV imports and offer processing to Celery, which <b>eliminated request-timeout
+                            failures</b> on large uploads.</li>
+                    <li>Designed signal-driven cache invalidation for hot officer/shift reads; wrote a pre-deploy script
+                        that stopped crashes during vertical scaling. CI/CD on Elastic Beanstalk + GitHub Actions +
+                        S3/CloudFront, fortnightly cadence. Mentored <span class="m">2</span> junior engineers.</li>
+                </ul>
             </div>
-            <div class="timeline-item">
-                <h3>Junior Software Developer | KNYSYS, LLC</h3>
-                <span>March 2021 - September 2022</span>
-                <p>Worked on developing a distributed system, creating RESTful APIs, and managing cron jobs. </p>
-                <p><strong>Technologies used:</strong> Python, Django, MySQL, and Docker. </p>
+
+            <div class="job reveal">
+                <div class="job-top">
+                    <span class="job-co">KNYSYS, LLC</span>
+                    <span class="job-loc">Karachi, PK</span>
+                    <span class="job-when">Mar 2021 – May 2023</span>
+                </div>
+                <div class="job-roles">Associate Software Developer &nbsp;·&nbsp; ex-Junior Software Developer</div>
+                <ul>
+                    <li>Built and maintained Python/Django backends for distributed business workflows, API-driven apps,
+                        scheduled tasks, and automation.</li>
+                    <li>Designed REST APIs, database integrations, and <b>Celery/Redis async workflows</b> to improve
+                        throughput, background execution, and fault tolerance.</li>
+                    <li>Customized and extended large-scale platforms including <b>Open edX</b>: backend workflows,
+                        platform config, and integrations across AWS and Azure environments.</li>
+                </ul>
             </div>
-            <div class="timeline-item">
-                <h3>Full-stack Developer Intern | Bitrupt</h3>
-                <span>February 2020 - May 2020</span>
-                <p>Worked on developing React Native applications from scratch, and contributed to React web applications. </p>
-                <p><strong>Technologies used:</strong> React Native, React, JavaScript, Firebase, and SQLite. </p>
+
+            <div class="job reveal">
+                <div class="job-top">
+                    <span class="job-co">Bitrupt</span>
+                    <span class="job-loc">Karachi, PK</span>
+                    <span class="job-when">Feb 2020 – May 2020</span>
+                </div>
+                <div class="job-roles">Full Stack Developer Intern</div>
+                <ul>
+                    <li>Built React and React Native features and integrated backend services with Firebase and SQLite
+                        in an agile team.</li>
+                </ul>
             </div>
         </div>
     </section>
-    
-    <!-- Projects Section -->
+
+    <section id="systems">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="route">/systems</span>
+                <h2>Systems I've shipped</h2>
+                <span class="meta">problem → approach → outcome</span>
+            </div>
+
+            <div class="case reveal">
+                <div class="case-inner">
+                    <div class="case-side">
+                        <div class="case-signal"><span class="dot"></span>Real-time ops</div>
+                        <div class="case-co">Diya Interactive</div>
+                        <div class="case-role">Sr. Backend Engineer · 2023–now</div>
+                        <div class="case-tech">
+                            <span class="chip">Django</span><span class="chip">DRF</span><span
+                                class="chip">Redis</span><span class="chip">Celery</span><span class="chip">AWS
+                                RDS</span><span class="chip">mobile + web</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <h3>Security workforce management platform</h3>
+                        <div class="case-block">
+                            <span class="lab">Context</span>
+                            <p>A multi-tenant SaaS that schedules, tracks, and reports on security officers across
+                                sites, with the same data live on both a web console and an officer mobile app.</p>
+                        </div>
+                        <div class="case-block">
+                            <span class="lab">Approach</span>
+                            <ul>
+                                <li>Role-based access control for officers, site managers, and admins, secured with
+                                    token auth.</li>
+                                <li>Redis caching and query optimization so scheduling, notifications, and reports
+                                    reflect instantly across web and mobile.</li>
+                                <li>Load balancing to absorb heavy traffic during peak check-in / check-out windows.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="case-block">
+                            <span class="lab">Scope</span>
+                            <p>Real-time scheduling, notifications, report generation, in-app messaging, leave
+                                management, and a vetted officer sign-up flow: the operational backbone used daily.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case reveal">
+                <div class="case-inner">
+                    <div class="case-side">
+                        <div class="case-signal"><span class="dot"></span>10,000+ users</div>
+                        <div class="case-co">KNYSYS, LLC</div>
+                        <div class="case-role">Assoc. Software Developer · 2022–2023</div>
+                        <div class="case-tech">
+                            <span class="chip">Django</span><span class="chip">Docker</span><span class="chip">Azure
+                                VMSS</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span
+                                class="chip">Memcache</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <h3>Scaling a Django platform past 10k users</h3>
+                        <div class="case-block">
+                            <span class="lab">Problem</span>
+                            <p>A Django application was hitting performance bottlenecks as it grew past 10,000 users.
+                                The existing infrastructure couldn't keep up with demand.</p>
+                        </div>
+                        <div class="case-block">
+                            <span class="lab">Approach</span>
+                            <ul>
+                                <li>Re-architected into distributed services using Docker containers for modularity.
+                                </li>
+                                <li>Azure VMSS for dynamic scaling, bringing machines up only when traffic demanded it.
+                                </li>
+                                <li>Separated MySQL, MongoDB, and Memcache onto dedicated servers to isolate load.</li>
+                            </ul>
+                        </div>
+                        <div class="case-block">
+                            <span class="lab">Outcome</span>
+                            <p>Handled the larger load with high availability and, because scaling was demand-driven,
+                                cut operational cost by running only the capacity actually needed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case reveal">
+                <div class="case-inner">
+                    <div class="case-side">
+                        <div class="case-signal"><span class="dot"></span>Multi-tenant</div>
+                        <div class="case-co">KNYSYS, LLC</div>
+                        <div class="case-role">Software Developer · 2021–2022</div>
+                        <div class="case-tech">
+                            <span class="chip">Open edX</span><span class="chip">Python</span><span
+                                class="chip">multi-tenant</span><span class="chip">OTP auth</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <h3>Open edX as a multi-tenant SaaS</h3>
+                        <div class="case-block">
+                            <span class="lab">Goal</span>
+                            <p>Turn Open edX into a SaaS platform where multiple organizations could run their own
+                                uniquely branded learning environments, with stronger login security.</p>
+                        </div>
+                        <div class="case-block">
+                            <span class="lab">Approach</span>
+                            <ul>
+                                <li>Modified the core LMS for a multi-tenant structure with per-organization themes and
+                                    branding.</li>
+                                <li>Added OTP-based login for an extra layer of security on sensitive institutional
+                                    data.</li>
+                                <li>Let organizations onboard and deploy without managing any backend infrastructure.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="case-block">
+                            <span class="lab">Outcome</span>
+                            <p>Each organization got a personalized, secure, self-serve LMS, making the platform far
+                                easier to scale to new customers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fixes">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="route">/fixes</span>
+                <h2>Fixed AI slop</h2>
+                <span class="meta">AI-generated code · measured before / after</span>
+            </div>
+
+            <p class="fix-intro reveal">Both of these were generated wholesale by AI and shipped without verification.
+                Here's what was actually broken, and what it took to make them <b>fast and correct</b>.</p>
+
+            <div class="fixlog">
+                <div class="fix reveal">
+                    <div class="fix-side">
+                        <span class="fix-kind">perf</span>
+                        <div class="fix-stat">41×<span>faster</span></div>
+                    </div>
+                    <div class="fix-body">
+                        <h3>Pattern-based bulk schedule generator</h3>
+                        <p class="fix-note"><span class="fx">Found</span> The AI-written generator re-validated
+                            licenses, compliance, leave, and working-time rules inside a per-date loop and wrote rows
+                            one at a time, so database queries grew linearly with the number of schedules created.</p>
+                        <p class="fix-note"><span class="fx">Fixed</span> Hoisted the invariant checks out of the loop
+                            and answered them from a single prefetch in memory, then batched writes with
+                            <b>bulk_create</b>, verifying identical output against the original with differential,
+                            stress, and fault-injection harnesses.</p>
+                        <div class="fix-result">
+                            <span class="ba">8,879<b>→</b>53 queries</span>
+                            <span class="ba">12,725ms<b>→</b>311ms</span>
+                            <span class="ba">O(n)<b>→</b>O(1)</span>
+                            <span class="ba">3 latent bugs fixed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fix reveal">
+                    <div class="fix-side">
+                        <span class="fix-kind">correctness</span>
+                        <div class="fix-stat">18/18<span>checks pass</span></div>
+                    </div>
+                    <div class="fix-body">
+                        <h3>Shared monthly session cap</h3>
+                        <p class="fix-note"><span class="fx">Found</span> The generated cap check ran at the wrong scope
+                            (one provider–client pair at a time instead of the whole account), so the shared monthly
+                            limit wasn't enforced on future bookings and cancelled sessions weren't excluded, letting an
+                            over-cap session slip through repeatedly.</p>
+                        <p class="fix-note"><span class="fx">Fixed</span> Switched the check to the live account-wide
+                            count of active sessions, excluded cancellations, closed a race where two simultaneous
+                            bookings could both pass, and hardened the monthly reset against a single bad record.</p>
+                        <div class="fix-result">
+                            <span class="ba">wrong scope<b>→</b>account-wide</span>
+                            <span class="ba">race<b>→</b>serialized</span>
+                            <span class="ba">verified on real data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="route">/capabilities</span>
+                <h2>What I own</h2>
+                <span class="meta">where the reliability lives</span>
+            </div>
+            <div class="caps reveal">
+                <div class="cap-cell">
+                    <span class="idx">01</span>
+                    <h3>API architecture</h3>
+                    <p>Multi-tenant REST design at scale: DRF ViewSets, JWT auth, versioned routes, and a large URL
+                        surface kept coherent as features multiply.</p>
+                </div>
+                <div class="cap-cell">
+                    <span class="idx">02</span>
+                    <h3>Async &amp; scheduling</h3>
+                    <p>Celery + Redis pipelines for polling, bulk generation, and long-running jobs, moving work off the
+                        request path so timeouts stop happening.</p>
+                </div>
+                <div class="cap-cell">
+                    <span class="idx">03</span>
+                    <h3>Caching &amp; query perf</h3>
+                    <p>Signal-driven cache invalidation, select_related/prefetch, and N+1 elimination on hot reads that
+                        carry the most traffic.</p>
+                </div>
+                <div class="cap-cell">
+                    <span class="idx">04</span>
+                    <h3>Real-time backends</h3>
+                    <p>WebSockets, Server-Sent Events, and Redis Pub/Sub for live attendance, geolocation, and status
+                        feeds.</p>
+                </div>
+                <div class="cap-cell">
+                    <span class="idx">05</span>
+                    <h3>Cloud &amp; CI/CD</h3>
+                    <p>AWS EC2, RDS, S3, Lambda, CloudFront and Elastic Beanstalk with GitHub Actions pipelines and
+                        safe, repeatable deploys.</p>
+                </div>
+                <div class="cap-cell">
+                    <span class="idx">06</span>
+                    <h3>Production reliability</h3>
+                    <p>Pre-deploy safeguards, staged release cadence, backend tests, and PR review, keeping dev,
+                        staging, and prod steady.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-            <!-- Employee Management Software -->
-            <div class="project-item" onclick="openModal('project1')">
-                <img src="./images/project-01.png" alt="Employee Management Software"/>
-                <h3>Employee Management Software</h3>
-                <p>Developed a comprehensive system for officer scheduling, check-ins, notifications, and reports.</p>
-                <a href="#projects" class="project-link">Learn More</a>
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="route">/projects</span>
+                <h2>Things I built for the fun of it</h2>
+                <span class="meta">side work</span>
             </div>
-
-            <!-- Distributed Systems -->
-            <div class="project-item" onclick="openModal('project2')">
-                <img src="./images/project-02.png" alt="Employee Management Software"/>
-                <h3>Distributed Systems</h3>
-                <p>Designed and implemented a scalable system for over 10,000 users using Docker and Azure VMSS.</p>
-                <a href="#projects" class="project-link">Learn More</a>
-            </div>
-
-            <!-- Open edX Customization -->
-            <div class="project-item" onclick="openModal('project3')">
-                <img src="./images/project-03.jpeg" alt="Employee Management Software"/>
-                <h3>Open edX Customization</h3>
-                <p>Customized Open edX for a multi-tenant SaaS model with OTP-based login.</p>
-                <a href="#projects" class="project-link">Learn More</a>
+            <div class="projects reveal">
+                <div class="proj">
+                    <span class="kind">biometric auth</span>
+                    <h3>Facial Recognition Auth</h3>
+                    <p>A FastAPI prototype for face-based login: user registration, face encoding, and a full
+                        encode-and-match flow as a proof of concept for computer-vision-assisted auth.</p>
+                    <div class="st">FastAPI · face_recognition · Python</div>
+                </div>
+                <div class="proj">
+                    <span class="kind">full stack</span>
+                    <h3>Therapy CRUD App</h3>
+                    <p>A healthcare-style app with DRF APIs, a React frontend, JWT auth, and role-based
+                        patient/counselor workflows for users, appointments, and therapy operations.</p>
+                    <div class="st">Django REST · React · JWT</div>
+                </div>
+                <div class="proj">
+                    <span class="kind">desktop utility</span>
+                    <h3>Images → PDF</h3>
+                    <p>A Python desktop tool that compresses a directory of images into a single PDF under a target size
+                        limit, packaged with PyInstaller for one-click use.</p>
+                    <div class="st">Python · Tkinter · PyInstaller</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Modals for Projects -->
-    <div id="project1" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('project1')">&times;</span>
-            <img src="./images/project-01.png" alt="Employee Management Software"/>
-            <br>
-            <h3>Employee Management Software</h3>
-            <h4>Project Overview:</h4>
-            <p> This Software as a Service system was designed to manage the scheduling, tracking, and reporting of officer duties at various sites. The solution encompassed multiple complex features aimed at improving efficiency and automating manual processes. </p>
-            <h4>Key Features:</h4>
-            <p>
-                <ul>
-                    <li><strong>Real-Time Scheduling::</strong> Automated scheduling of officers for various sites, ensuring that duties were assigned efficiently and in real-time. </li>
-                    <li><strong>Notifications:</strong> Officers and site managers received notifications regarding duty schedules, check-ins, check-outs, and leave approvals. </li>
-                    <li><strong>Reports Generation:</strong> Generated detailed reports on officer duties, attendance, and overall site performance. </li>
-                    <li><strong>Messaging:</strong> Included messaging features for seamless communication between officers and site managers. </li>
-                    <li><strong>Officer Pre-check-in/Check-in/Check-out (Mobile App):</strong> Handled backend logic for officer check-in and check-out, integrated with a mobile app. </li>
-                    <li><strong>Leave Management System:</strong> Leave requests, approval workflows, and tracking. </li>
-                    <li><strong>Screening and Vetting for Signup:</strong> Introduced a sign-up process that required thorough vetting and approval before officers could join. </li>
-                </ul>
-            </p>
-            <h4>User Authentication and Permissions:</h4>
-            <p> This system was built around a role-based access control (RBAC) mechanism. Different users, such as officers, site managers, and admins, had specific roles with varying levels of access to features. Authentication was handled via token-based security, ensuring secure access to the system, while permissions were tightly managed according to user roles. </p>
-            <h4>Challenges and Data Synchronization:</h4>
-            <p> Managing real-time data and synchronizing across the mobile app and web interface posed a challenge. However, the use of caching (e.g., Redis) and optimized database queries ensured that all actions—scheduling, notifications, and reports—were reflected instantly across the system. Additionally, managing heavy traffic during peak check-in/out times was optimized using load balancing. </p>
-        </div>
-    </div>
+    <section id="stack">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="route">/stack</span>
+                <h2>The toolkit</h2>
+                <span class="meta">day-to-day</span>
+            </div>
+            <div class="stack-grid reveal">
+                <div class="stack-row"><span class="k">Languages</span><span class="v">Python · JavaScript</span></div>
+                <div class="stack-row"><span class="k">Backend</span><span class="v">Django · DRF · FastAPI · Flask ·
+                        REST · WebSockets · SSE</span></div>
+                <div class="stack-row"><span class="k">Async / cache</span><span class="v">Celery · Redis · Redis
+                        Pub/Sub · cache invalidation</span></div>
+                <div class="stack-row"><span class="k">Databases</span><span class="v">PostgreSQL · MySQL · MongoDB ·
+                        DynamoDB · Firebase RTDB</span></div>
+                <div class="stack-row"><span class="k">Cloud</span><span class="v">AWS (EC2 · S3 · RDS · Lambda · EB ·
+                        CloudFront) · Azure · GCP</span></div>
+                <div class="stack-row"><span class="k">DevOps</span><span class="v">Docker · GitHub Actions · CI/CD ·
+                        Linux</span></div>
+                <div class="stack-row"><span class="k">Architecture</span><span class="v">Multi-tenant SaaS ·
+                        distributed systems · SOA · API design</span></div>
+                <div class="stack-row"><span class="k">Frontend</span><span class="v">React · React Native · Vite · HTML
+                        · CSS</span></div>
+            </div>
 
-    <div id="project2" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('project2')">&times;</span>
-            <img src="./images/project-02.png" alt="Employee Management Software"/>
-            <br>
-            <h3>Distributed Systems</h3>
-            <h4>Project Overview:</h4>
-            <p> This project focused on addressing the scalability challenges of a Django-based application serving over 10,000 users. The goal was to enhance the architecture to allow seamless growth without compromising performance. </p>
-            <h4>Problem Solved:</h4>
-            <p> The core issue was scalability. The existing infrastructure could not efficiently handle the growing number of users, leading to performance bottlenecks. </p>
-            <h4>Technologies and Approach:</h4>
-            <p>
-                <ul>
-                    <li><strong>Django:</strong> The core framework for the project. </li>
-                    <li><strong>Docker Containers:</strong> Used to separate services for modularity and easy scalability. </li>
-                    <li><strong>Azure VMSS (Virtual Machine Scale Sets):</strong> Enabled dynamic scaling of virtual machines based on traffic demands. </li>
-                    <li><strong>Azure Database for MySQL and MongoDB::</strong> MySQL was deployed on Azure, while MongoDB required a separate server since Azure did not offer out-of-the-box support for it. </li>
-                    <li><strong>Memcache:</strong> Deployed on a separate server for caching to improve response times. </li>
-                    <!-- <li><strong>Unified Connections:</strong> All virtual machine instances were connected to the same MySQL, MongoDB, and Memcache instances, ensuring consistency. </li> -->
-                </ul>
-                These improvements allowed the system to handle a larger load efficiently while optimizing costs through dynamic scaling.
-            </p>
-            <h4>Improvement to Existing Architecture:</h4>
-            <p> By transitioning to a distributed architecture, the project gained the following benefits: </p>
-            <p>
-                <ul>
-                    <li><strong>Improved Scalability:</strong> The use of VMSS and Docker containers allowed the system to scale dynamically as user traffic increased, ensuring high availability and performance. </li>
-                    <li><strong>Service Separation:</strong> Separating services like MySQL, MongoDB, and Memcache ensured that these resources were optimized and dedicated to specific tasks, reducing the load on individual instances. </li>
-                    <li><strong>Cost Efficiency:</strong> Dynamic scaling reduced operational costs by spinning up VMs only when needed, thereby optimizing resource utilization. </li>
-                </ul>
-                These improvements allowed the system to handle a larger load efficiently while optimizing costs through dynamic scaling.
-            </p>
-        </div>
-    </div>
-
-    <div id="project3" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('project3')">&times;</span>
-            <img src="./images/project-03-02.jpeg" alt="Employee Management Software"/>
-            <br>
-            <h3>Open edX Customization</h3>
-            <h4>Project Overview:</h4>
-            <p> This project involved customizing Open edX to transform it into a Software-as-a-Service (SaaS) platform, allowing multiple organizations to have their own uniquely branded learning platforms. Additional functionalities, like OTP authentication, were also integrated. </p>
-            <h4>Key Customizations:</h4>
-            <p>
-                <ul>
-                    <li><strong>SaaS Model:</strong> The core LMS was modified to support a multi-tenant structure, enabling different organizations to sign up and have exclusive themes. Each organization could customize their learning environment, creating a unique experience for their users. </li>
-                    <li><strong>OTP on User Login:</strong> Added an extra layer of security by implementing an OTP (One-Time Password) functionality during login, improving user security. </li>
-                    <li><strong>Custom Themes:</strong> Organizations were able to customize the look and feel of their LMS, resulting in a more personalized user experience. </li>
-                </ul>
-            </p>
-            <h4> Impact on User Experience: </h4>
-            <p>
-                <ul>
-                    <li><strong>Improved Personalization:</strong> The introduction of custom themes allowed each organization to offer a tailored experience for their users, aligning the platform’s design with their branding. </li>
-                    <li><strong>Enhanced Security:</strong> The OTP feature significantly improved login security, which was particularly beneficial for institutions handling sensitive data. </li>
-                    <li><strong>Ease of Access:</strong> The SaaS model made it easier for organizations to onboard and deploy their own LMS without needing to manage the backend infrastructure, making the platform more scalable and user-friendly. </li>
-                </ul>
-            </p>
-        </div>
-    </div>
-
-    <!-- Education Section -->
-    <section id="education">
-        <h2>Education</h2>
-        <div class="education-item">
-            <h3>DHA Suffa University</h3>
-            <p>Bachelor of Science in Computer Science, 2016 - 2021</p>
-            <p>CGPA: 3.5</p>
+            <div class="bg-band reveal">
+                <div class="bg-card">
+                    <div class="lab">Education</div>
+                    <div class="row"><span class="t">B.S. Computer Science</span><span class="s">DHA Suffa
+                            University<br>2017–2020 · CGPA 3.5</span></div>
+                </div>
+                <div class="bg-card">
+                    <div class="lab">Certifications</div>
+                    <div class="row"><span class="t">AI For Everyone</span><span class="s">Coursera</span></div>
+                    <div class="row"><span class="t">Make Your Own Robotics</span><span class="s">EDVON</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
-        <h2>Contact</h2>
-        <form action="https://formspree.io/f/xovaznkj" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="submit-btn">Send Message</button
-        </form>
+        <div class="wrap">
+            <div class="contact reveal">
+                <div class="avail"><span class="pulse"></span> open to senior backend roles</div>
+                <h2>Let's talk about your backend.</h2>
+                <p>Available for remote and onsite roles. If you need someone to own backend infrastructure that has to
+                    stay up, I'd like to hear about it.</p>
+
+                <form class="cform" action="https://formspree.io/f/xovaznkj" method="POST">
+                    <div class="cfield">
+                        <label for="cf-name">Name</label>
+                        <input id="cf-name" name="name" type="text" autocomplete="name" required>
+                    </div>
+                    <div class="cfield">
+                        <label for="cf-email">Email</label>
+                        <input id="cf-email" name="email" type="email" autocomplete="email" required>
+                    </div>
+                    <div class="cfield">
+                        <label for="cf-msg">Message</label>
+                        <textarea id="cf-msg" name="message" required></textarea>
+                    </div>
+                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+                        style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+                    <button type="submit" class="btn btn-primary cform-send">Send message →</button>
+                    <p class="cform-status" role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="cdivider"><span>or reach me directly</span></div>
+
+                <div class="cta-row">
+                    <a class="btn btn-primary" href="mailto:mahad.ehsan@gmail.com">→ mahad.ehsan@gmail.com</a>
+                    <a class="btn btn-ghost" href="https://www.mahadehsan.com/Syed%20Mahad%20Ehsan%27s%20Resume.pdf"
+                        target="_blank" rel="noopener">résumé (pdf)</a>
+                    <a class="btn btn-ghost" href="https://mahadehsan.com" target="_blank"
+                        rel="noopener">mahadehsan.com</a>
+                    <a class="btn btn-ghost" href="https://github.com/SyedMahad" target="_blank"
+                        rel="noopener">github</a>
+                    <a class="btn btn-ghost" href="https://linkedin.com/in/syed-mahad-ehsan" target="_blank"
+                        rel="noopener">linkedin</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer id="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Syed Mahad Ehsan. All Rights Reserved.</p>
-            <div class="social-footer">
-                <a href="https://www.linkedin.com/in/syed-mahad-ehsan/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/SyedMahad" target="_blank"><i class="fab fa-github"></i></a>
-                <!-- <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a> -->
+    <footer>
+        <div class="wrap">
+            <div class="foot-inner">
+                <span>© 2026 Syed Mahad Ehsan · Karachi, PK</span>
+                <div class="foot-links">
+                    <a href="mailto:mahad.ehsan@gmail.com">email</a>
+                    <a href="https://github.com/SyedMahad" target="_blank" rel="noopener">github</a>
+                    <a href="https://linkedin.com/in/syed-mahad-ehsan" target="_blank" rel="noopener">linkedin</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
+
 </html>

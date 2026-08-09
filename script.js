@@ -1,121 +1,60 @@
-// Ensure the script runs only after the page is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav ul li a");
-
-    // Smooth scroll with null check
-    document.querySelectorAll('nav ul li a:not(.resume-btn)').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                console.warn("Target not found for", this.getAttribute('href'));
-            }
-        });
-    });
-
-    // Sticky Navbar
-    window.onscroll = function () {
-        const navbar = document.getElementById('navbar');
-        if (window.pageYOffset > 50) {
-            navbar.classList.add('sticky');
-        } else {
-            navbar.classList.remove('sticky');
+// scroll reveal
+const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
         }
-
-        // Call function to activate nav link based on scroll position
-        updateActiveNavLink();
-    };
-
-    // Function to add 'active' class to the current nav link
-    function updateActiveNavLink() {
-        let currentSection = "";
-
-        // Get the current section in view
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-
-            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                currentSection = section.getAttribute("id");
-            }
-        });
-
-        // Add 'active' class to the current link and remove it from others
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
-                link.classList.add("active");
-            }
-        });
-    }
-
-    // Light/Dark Mode Toggle
-    document.getElementById('modeToggle').addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
     });
-
-    // Modals for Projects
-    document.querySelectorAll('.project-item').forEach(item => {
-        item.addEventListener('click', function () {
-            const modalId = this.getAttribute('onclick').replace('openModal(', '').replace(')', '').replace(/['"]/g, '');
-            openModal(modalId);
-        });
-    });
-
-    document.querySelectorAll('.close').forEach(closeButton => {
-        closeButton.addEventListener('click', function () {
-            const modal = this.parentElement.parentElement;
-            modal.style.display = 'none';
-        });
-    });
-
-    // Close modal when clicking outside of the modal content
-    window.addEventListener('click', function (event) {
-        document.querySelectorAll('.modal').forEach(modal => {
-            const modalContent = modal.querySelector('.modal-content');
-            if (event.target == modal) {  // If the target of the click is the modal (not the content)
-                modal.style.display = 'none';
-            }
-        });
-    });
-
+}, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-function openModal(id) {
-    document.getElementById(id).style.display = 'block';
+// pipeline node lighting: sweep in sync with the flowing signal
+const nodes = Array.from(document.querySelectorAll('.pipe-nodes .node'));
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduce && nodes.length) {
+    let i = 0;
+    setInterval(() => {
+        nodes.forEach(n => n.classList.remove('lit'));
+        nodes[i].classList.add('lit');
+        if (nodes[i + 1]) nodes[i + 1].classList.add('lit');
+        i = (i + 1) % nodes.length;
+    }, 3400 / nodes.length);
 }
 
-function closeModal(id) {
-    document.getElementById(id).style.display = 'none';
-}
+// contact form: works out-of-the-box via mailto, upgrades to inbox delivery
+// once YOUR_FORM_ID is replaced with a real Formspree form id.
+const cform = document.querySelector('.cform');
+if (cform) {
+    const status = cform.querySelector('.cform-status');
+    const endpoint = cform.getAttribute('action');
+    const setStatus = (msg, err) => { status.textContent = msg; status.classList.toggle('err', !!err); };
+    cform.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(cform);
+        if (data.get('_gotcha')) return; // spam honeypot
+        const name = (data.get('name') || '').toString();
+        const email = (data.get('email') || '').toString();
+        const message = (data.get('message') || '').toString();
 
-
-function toggleMode() {
-    // Toggle the icon based on the current mode
-    const icon = document.getElementById('toggleIcon');
-    if (document.body.classList.contains('light-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun'); // Change to sun icon for dark mode
-    } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon'); // Change to moon icon for light mode
-    }
-}
-
-function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    const hamburger = document.querySelector('#hamburger');
-    navLinks.classList.toggle('active');
-
-    if (navLinks.classList.contains('active')) {
-        hamburger.classList.remove('fa-bars');
-        hamburger.classList.add('fa-times'); // Change to close icon when menu is open
-    } else {
-        hamburger.classList.remove('fa-times');
-        hamburger.classList.add('fa-bars'); // Change to hamburger icon when menu is closed
-    }
+        if (endpoint.includes('YOUR_FORM_ID')) {
+            // not configured yet -> open the visitor's mail client, pre-filled
+            const subject = encodeURIComponent('Portfolio enquiry from ' + name);
+            const body = encodeURIComponent(message + '\n\n' + name + ' (' + email + ')');
+            window.location.href = 'mailto:mahad.ehsan@gmail.com?subject=' + subject + '&body=' + body;
+            setStatus('Opening your email app…');
+            return;
+        }
+        setStatus('Sending…');
+        try {
+            const res = await fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+            if (res.ok) { cform.reset(); setStatus("Thanks, I'll get back to you soon."); }
+            else { setStatus('Something went wrong. Please email mahad.ehsan@gmail.com', true); }
+        } catch (err) {
+            setStatus('Something went wrong. Please email mahad.ehsan@gmail.com', true);
+        }
+    });
 }
