@@ -26,6 +26,7 @@ Python script generates the case-study and write-up pages so they share one nav 
 ├── systems/<slug>/index.html   # GENERATED case-study pages
 ├── fixes/<slug>/index.html     # GENERATED fix write-up pages
 ├── tools/build_systems.py      # page + homepage-card generator
+├── tools/og-image.html         # source for the social card; screenshot at 1200×630
 ├── sitemap.xml · robots.txt
 └── images/og-image.png         # social card (1200×630)
 ```
