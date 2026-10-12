@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Source for images/og-image.png (1200×630). Re-render after headline changes:
+     open this file in a browser at a 1200×630 viewport and screenshot it,
+     or use Playwright: page.set_viewport_size({"width":1200,"height":630}); page.screenshot(path="images/og-image.png") -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@300;400&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0 }
+  html, body { width: 1200px; height: 630px; overflow: hidden }
+  body {
+    background: #0A0E14;
+    background-image:
+      linear-gradient(rgba(150,180,220,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(150,180,220,.05) 1px, transparent 1px);
+    background-size: 46px 46px;
+    color: #E6ECF3;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    padding: 64px 80px 56px;
+    display: flex; flex-direction: column;
+  }
+  .brand { font-family: 'IBM Plex Mono', monospace; font-size: 20px; color: #A5B1C0; display: flex; align-items: center; gap: 14px; letter-spacing: .02em }
+  .tag { color: #F5A524; border: 1px solid rgba(245,165,36,.35); background: rgba(245,165,36,.10); padding: 3px 10px; border-radius: 4px; font-weight: 500; font-size: 17px }
+  .role { margin-left: auto; font-size: 16px; text-transform: uppercase; letter-spacing: .14em; color: #5F6E7E }
+  h1 { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 600; margin-top: 58px; width: max-content }
+  h1 span { display: block; white-space: nowrap; width: max-content }
+  .a { line-height: 1; letter-spacing: -0.03em; margin-bottom: 10px }
+  .b { color: #F5A524; line-height: 1.05; letter-spacing: -0.02em; font-size: 50px }
+  .lede { margin-top: 30px; font-size: 25px; font-weight: 300; color: #A5B1C0; max-width: 960px; line-height: 1.4 }
+  .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between }
+  .stack { font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: #5F6E7E }
+  .stack b { color: #E6ECF3; font-weight: 400 }
+</style>
+</head>
+<body>
+  <div class="brand"><span class="tag">SME</span> Syed Mahad Ehsan <span class="role">Senior Backend &amp; AI Engineer</span></div>
+  <h1><span class="a">Backends and RAG systems,</span><span class="b">built to be fast, reliable, and hard to break.</span></h1>
+  <p class="lede">5+ years building multi-tenant B2B SaaS and enterprise RAG: hybrid retrieval, cited answers, streamed in real time.</p>
+  <div class="foot">
+    <div class="stack"><b>Python</b> · Django · FastAPI · Celery · Redis · PostgreSQL/pgvector · <b>AWS</b> · Azure</div>
+  </div>
+  <script>
+    // scale line 1 so it ends exactly where line 2 does
+    const fit = () => { const a = document.querySelector('.a'), b = document.querySelector('.b');
+      a.style.fontSize = '50px'; a.style.fontSize = (50 * b.getBoundingClientRect().width / a.getBoundingClientRect().width) + 'px'; };
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit); fit();
+  </script>
+</body>
+</html>
