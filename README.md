@@ -28,7 +28,9 @@ Python script generates the case-study and write-up pages so they share one nav 
 ├── tools/build_systems.py      # page + homepage-card generator
 ├── tools/og-image.html         # source for the social card; screenshot at 1200×630
 ├── sitemap.xml · robots.txt
-└── images/og-image.png         # social card (1200×630)
+├── CNAME                       # GitHub Pages custom domain (remove when the site moves off Pages)
+├── Syed Mahad Ehsan's Resume.pdf   # linked from the site; keep this exact file name
+└── images/og-image.png         # social card (1200×630), rendered from tools/og-image.html
 ```
 
 ## Editing case studies and fixes
@@ -54,7 +56,8 @@ Never edit files under `systems/` or `fixes/` directly; they are overwritten on 
 ## Features
 
 - **Dark / light mode:** persists to `localStorage`, respects OS preference on first visit
-- **Self-fitting headline:** 2 lines on tablet/desktop, 3 on phones
+- **Headline lockup:** from 900px up, two lines with the first scaled to end where the second does;
+  below that it sizes itself to fit 2 lines (3 on phones)
 - **Auto-updating experience:** years of experience tick up every 1 March
 - **Inline SVG diagrams and charts** that follow the theme
 - **Scroll-reveal animations** that respect `prefers-reduced-motion`
