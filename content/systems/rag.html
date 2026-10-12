@@ -1,0 +1,176 @@
+<div class="case-block">
+    <span class="lab">Context</span>
+    <p>Engineers in the industrial and energy sector need answers buried in thousands of pages
+        of OEM manuals and IOMs. A generic chatbot isn't enough: every answer has to cite the
+        exact page, and each business unit may only see its own documents.</p>
+</div>
+
+<figure class="case-diagram">
+    <figcaption><span>answer path</span><span>question → cited, streamed answer</span></figcaption>
+
+    <!-- desktop: left to right -->
+    <svg class="dg dg-wide" viewBox="0 0 1100 250" role="img"
+        aria-label="Answer path: the question is rewritten, an agent loop runs vector and keyword search fused with RRF and parent expansion for up to 4 turns, then the answer is generated, citations are verified, and it streams over SSE.">
+        <defs>
+            <marker id="dg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+                markerHeight="6" orient="auto-start-reverse">
+                <path class="dg-head" d="M0 0L10 5L0 10z" />
+            </marker>
+        </defs>
+        <rect class="dg-loop" x="256" y="12" width="468" height="226" rx="10" />
+        <text class="dg-s" x="272" y="34">agent loop · ≤ 4 tool turns</text>
+
+        <g class="dg-lines">
+            <path d="M108 126 H128" marker-end="url(#dg-arrow)" />
+            <path d="M226 126 H246 M246 70 V182" />
+            <path d="M246 70 H272" marker-end="url(#dg-arrow)" />
+            <path d="M246 182 H272" marker-end="url(#dg-arrow)" />
+            <path d="M434 70 H452 V116 H472" marker-end="url(#dg-arrow)" />
+            <path d="M434 182 H452 V136 H472" marker-end="url(#dg-arrow)" />
+            <path d="M544 126 H564" marker-end="url(#dg-arrow)" />
+            <path d="M636 152 V224 H354 V212" marker-end="url(#dg-arrow)" />
+            <path d="M706 126 H748" marker-end="url(#dg-arrow)" />
+            <path d="M850 126 H870" marker-end="url(#dg-arrow)" />
+            <path d="M976 126 H996" marker-end="url(#dg-arrow)" />
+        </g>
+
+        <g class="dg-node"><rect x="8" y="100" width="100" height="52" rx="8" /><text x="58"
+                y="131">question</text></g>
+        <g class="dg-node"><rect x="130" y="100" width="96" height="52" rx="8" /><text x="178"
+                y="131">rewrite</text></g>
+        <g class="dg-node"><rect x="274" y="44" width="160" height="52" rx="8" /><text x="354"
+                y="67">vector search</text><text class="dg-sub" x="354" y="86">pgvector HNSW</text></g>
+        <g class="dg-node"><rect x="274" y="156" width="160" height="52" rx="8" /><text x="354"
+                y="179">keyword search</text><text class="dg-sub" x="354" y="198">Postgres FTS</text></g>
+        <text class="dg-s dg-mid" x="354" y="122">unit filter on</text>
+        <text class="dg-s dg-mid" x="354" y="139">every query</text>
+        <g class="dg-node"><rect x="474" y="100" width="70" height="52" rx="8" /><text x="509"
+                y="131">RRF</text></g>
+        <g class="dg-node"><rect x="566" y="100" width="140" height="52" rx="8" /><text x="636"
+                y="131">parent expand</text></g>
+        <g class="dg-node"><rect x="750" y="100" width="100" height="52" rx="8" /><text x="800"
+                y="131">generate</text></g>
+        <g class="dg-node"><rect x="872" y="100" width="104" height="52" rx="8" /><text x="924"
+                y="122">verify</text><text x="924" y="141">citations</text></g>
+        <g class="dg-node dg-hot"><rect x="998" y="100" width="94" height="52" rx="8" /><text x="1045"
+                y="122">stream</text><text x="1045" y="141">SSE</text></g>
+    </svg>
+
+    <!-- phones: top to bottom -->
+    <svg class="dg dg-tall" viewBox="0 0 340 574" role="img"
+        aria-label="Answer path: the question is rewritten, an agent loop runs vector and keyword search fused with RRF and parent expansion for up to 4 turns, then the answer is generated, citations are verified, and it streams over SSE.">
+        <defs>
+            <marker id="dg-arrow-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+                markerHeight="6" orient="auto-start-reverse">
+                <path class="dg-head" d="M0 0L10 5L0 10z" />
+            </marker>
+        </defs>
+        <rect class="dg-loop" x="10" y="128" width="320" height="254" rx="10" />
+        <text class="dg-s dg-mid" x="170" y="370">agent loop · ≤ 4 tool turns</text>
+
+        <g class="dg-lines">
+            <path d="M170 46 V68" marker-end="url(#dg-arrow-t)" />
+            <path d="M170 106 V140 M96 140 H244" />
+            <path d="M96 140 V164" marker-end="url(#dg-arrow-t)" />
+            <path d="M244 140 V164" marker-end="url(#dg-arrow-t)" />
+            <path d="M96 210 V262 H118" marker-end="url(#dg-arrow-t)" />
+            <path d="M244 210 V262 H222" marker-end="url(#dg-arrow-t)" />
+            <path d="M170 280 V302" marker-end="url(#dg-arrow-t)" />
+            <path d="M105 322 H44 V212" marker-end="url(#dg-arrow-t)" />
+            <path d="M170 340 V402" marker-end="url(#dg-arrow-t)" />
+            <path d="M170 440 V462" marker-end="url(#dg-arrow-t)" />
+            <path d="M170 500 V522" marker-end="url(#dg-arrow-t)" />
+        </g>
+
+        <g class="dg-node"><rect x="110" y="10" width="120" height="36" rx="8" /><text x="170"
+                y="32">question</text></g>
+        <g class="dg-node"><rect x="110" y="70" width="120" height="36" rx="8" /><text x="170"
+                y="92">rewrite</text></g>
+        <g class="dg-node"><rect x="26" y="166" width="140" height="44" rx="8" /><text x="96"
+                y="184">vector search</text><text class="dg-sub" x="96" y="200">pgvector</text></g>
+        <g class="dg-node"><rect x="174" y="166" width="140" height="44" rx="8" /><text x="244"
+                y="184">keyword search</text><text class="dg-sub" x="244" y="200">Postgres FTS</text></g>
+        <g class="dg-node"><rect x="120" y="244" width="100" height="36" rx="8" /><text x="170"
+                y="266">RRF</text></g>
+        <g class="dg-node"><rect x="105" y="304" width="130" height="36" rx="8" /><text x="170"
+                y="326">parent expand</text></g>
+        <g class="dg-node"><rect x="90" y="404" width="160" height="36" rx="8" /><text x="170"
+                y="426">generate</text></g>
+        <g class="dg-node"><rect x="90" y="464" width="160" height="36" rx="8" /><text x="170"
+                y="486">verify citations</text></g>
+        <g class="dg-node dg-hot"><rect x="90" y="524" width="160" height="36" rx="8" /><text x="170"
+                y="546">stream · SSE</text></g>
+    </svg>
+</figure>
+
+
+<div class="case-block">
+    <span class="lab">Approach</span>
+    <ul>
+        <li><b>Agentic hybrid retrieval:</b> multi-turn query rewriting, then a tool-using agent
+            (vector search, keyword search, document reads; capped at 4 turns) over pgvector
+            HNSW and Postgres full-text search fused with RRF, with parent/child context
+            expansion.</li>
+        <li><b>Citation grounding:</b> answers cite page-level sources, structural verification
+            drops any citation that doesn't match a retrieved chunk, and everything streams to
+            the client over SSE.</li>
+        <li><b>Ingestion:</b> Docling with OCR, contextual chunk enrichment, SHA-256 dedup,
+            embedding reuse, and leased workers with retries.</li>
+        <li><b>Tenant isolation:</b> 23 permissions across Global, Organization and Unit scopes,
+            a unit filter on every retrieval query, and isolation tests in both services.</li>
+        <li><b>Auth:</b> JWT bearer tokens for every sign-in method, including Microsoft Entra ID single
+            sign-on.</li>
+        <li><b>Guardrails:</b> retrieved text is treated as data, never instructions; answers come only from
+            cited sources, and the system declines when nothing relevant is found. A rule-based intent check
+            turns away off-topic requests before any retrieval runs.</li>
+        <li><b>Defence in depth:</b> unit-scoped authorization in the API, a unit filter in every SQL retrieval
+            path, and an internal RAG service the browser can never reach directly.</li>
+        <li><b>Re-ingest tooling:</b> embedding model and version tracked on every chunk, with unchanged chunks
+            reusing their stored vectors when documents are reprocessed.</li>
+        <li><b>Provider-agnostic adapters</b> for LLMs, embeddings, rerankers and parsers,
+            running on Microsoft Foundry (chat and text-embedding-3-large).</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Key decisions</span>
+    <ul>
+        <li>pgvector over a dedicated vector DB: one database holds metadata, vectors and tenant
+            filters.</li>
+        <li>Hybrid search plus RRF over a reranker alone: keyword search catches exact matches
+            that embeddings miss.</li>
+        <li>The browser never calls the RAG service directly; the API layer owns auth and
+            persistence.</li>
+        <li>PyMuPDF rejected over its AGPL licence.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Hardest problems</span>
+    <ul>
+        <li><b>Page drift:</b> the parser invented page numbers, corrupting citations. Fixed
+            with nullable page bounds end to end, embeddings preserved on re-ingest, and a
+            backfill script.</li>
+        <li><b>Concurrency crash:</b> parallel vector and keyword searches on one async DB
+            session failed, so they now run sequentially.</li>
+        <li><b>Hedge text breaking answers:</b> fixed with grounded decoding, with the verified
+            final answer treated as canonical.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Leadership</span>
+    <ul>
+        <li>Team and tech lead for <span class="m">4</span> engineers: wrote the architecture docs and ERD, set PR
+            review rules and CI quality gates, and estimated work for management.</li>
+        <li>Ran product demos for the client and interviewed engineering candidates.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Outcome</span>
+    <p>Delivered to the client with <span class="m">91</span> API endpoints, <span
+            class="m">~680</span> tests and a retrieval eval harness with a CI recall gate. A
+        <span class="m">1,300+</span> page manual was ingested into <span
+            class="m">3,800+</span> searchable chunks.</p>
+</div>

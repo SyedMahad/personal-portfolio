@@ -1,0 +1,24 @@
+<div class="case-block">
+    <span class="lab">Context</span>
+    <p>A platform connecting clients with counsellors for booked appointments, chat and video
+        sessions. The codebase was on Django 2.2, and its chat ran on a WebSocket stack that was
+        hard to maintain.</p>
+</div>
+
+<div class="case-block">
+    <span class="lab">Approach</span>
+    <ul>
+        <li><b>Chat rebuild:</b> replaced the Django Channels/WebSocket chat with a versioned
+            REST API (v2) using OpenTok session tokens.</li>
+        <li><b>Framework upgrade:</b> migrated Django 2.2 → 4.2, along with DRF 3.15 and the
+            SimpleJWT upgrade.</li>
+        <li><b>CI:</b> built a GitHub Actions test pipeline with MySQL 8 and per-module test
+            runs.</li>
+        <li><b>Production fixes</b> across appointments, auth and video sessions. <a class="cs-link" href="../../fixes/session-cap/">→ full write-up</a></li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Outcome</span>
+    <p>A modernised, supported stack with automated tests on every push.</p>
+</div>

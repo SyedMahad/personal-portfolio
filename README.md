@@ -4,7 +4,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-syed--mahad--ehsan-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/syed-mahad-ehsan)
 [![GitHub](https://img.shields.io/badge/GitHub-SyedMahad-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/SyedMahad)
 
-> Senior Backend Software Engineer — Python · Django · DRF · Celery · Redis · AWS
+> Senior Backend & AI Engineer · Python · Django · FastAPI · RAG · PostgreSQL/pgvector · AWS · Azure
 
 ![Portfolio preview](images/og-image.png)
 
@@ -12,79 +12,59 @@
 
 ## What's in here
 
-Personal portfolio site for [mahadehsan.com](https://mahadehsan.com). Single-page, fully static — no framework, no build step.
+Personal portfolio for [mahadehsan.com](https://mahadehsan.com). Fully static: no framework, no npm. A small
+Python script generates the case-study and write-up pages so they share one nav and footer.
 
 ```
 .
-├── index.html          # markup
-├── styles.css          # all styling, including light/dark theme
-├── script.js           # scroll reveal, pipeline animation, contact form, theme toggle
-└── images/
-    └── og-image.png    # social card (1200×630)
+├── index.html                  # homepage
+├── styles.css                  # all styling, including light/dark theme
+├── script.js                   # reveal, pipeline animation, contact form, theme, headline fit, years of experience
+├── content/
+│   ├── systems/<slug>.html     # case-study bodies (edit these)
+│   └── fixes/<slug>.html       # fix write-up bodies (edit these)
+├── systems/<slug>/index.html   # GENERATED case-study pages
+├── fixes/<slug>/index.html     # GENERATED fix write-up pages
+├── tools/build_systems.py      # page + homepage-card generator
+├── sitemap.xml · robots.txt
+└── images/og-image.png         # social card (1200×630)
 ```
 
----
+## Editing case studies and fixes
 
-## Features
+1. Edit the body in `content/systems/<slug>.html` or `content/fixes/<slug>.html`.
+2. Edit titles, card summaries, metrics, chips or order in `PAGES` / `FIXES` in `tools/build_systems.py`.
+3. Run `python3 tools/build_systems.py`. It rewrites every generated page and the homepage cards between the
+   `<!-- systems:cards -->` / `<!-- fixes:cards -->` markers.
+4. Commit both the content and the generated files.
 
-- **Dark / light mode** — toggles via button, persists to `localStorage`, respects OS preference on first visit
-- **Animated request pipeline** — signals sweep through `client → api → cache → queue → db` in sync
-- **Scroll-reveal animations** — respects `prefers-reduced-motion`
-- **Contact form** — powered by [Formspree](https://formspree.io), with honeypot spam protection
-- **Sticky social sidebar** — LinkedIn and GitHub always reachable
-- **Zero dependencies** — no npm, no bundler, no framework. Drop the files and it works.
-
----
+Never edit files under `systems/` or `fixes/` directly; they are overwritten on the next build.
 
 ## Sections
 
 | Route | Content |
 |---|---|
-| `/work` | 3 roles across 5+ years, with specific metrics |
-| `/systems` | 3 case studies — problem, approach, outcome |
-| `/fixes` | AI-generated code I diagnosed and fixed, with before/after numbers |
-| `/capabilities` | What I own: API design, async, caching, real-time, CI/CD, reliability |
-| `/projects` | Side projects: facial recognition auth, therapy CRUD app, image-to-PDF utility |
-| `/stack` | Full toolkit, education, certifications |
-| `/contact` | Contact form + direct links |
+| `/work` | Roles and headline results, each linked to its case study |
+| `/systems` | 6 case-study cards → full pages at `/systems/<slug>/` |
+| `/fixes` | AI-generated code made production-ready → write-ups at `/fixes/<slug>/` |
+| `/stack` | Six capabilities linked to their proof, full toolkit, education |
+| `/contact` | Contact form (Formspree), 20-min intro call (Cal.com), direct links |
 
----
+## Features
+
+- **Dark / light mode:** persists to `localStorage`, respects OS preference on first visit
+- **Self-fitting headline:** 2 lines on tablet/desktop, 3 on phones
+- **Auto-updating experience:** years of experience tick up every 1 March
+- **Inline SVG diagrams and charts** that follow the theme
+- **Scroll-reveal animations** that respect `prefers-reduced-motion`
+- **Contact form** via [Formspree](https://formspree.io) with honeypot spam protection;
+  keep **Restrict to Domain → mahadehsan.com** set in the Formspree dashboard
 
 ## Deploy
 
-**GitHub Pages** (already live):
-
-```bash
-git add .
-git commit -m "update"
-git push
-```
-
-GitHub Pages serves `index.html` at the repo root automatically. The custom domain is configured in repo Settings → Pages.
-
-**Formspree** — to receive form submissions in your inbox, replace `YOUR_FORM_ID` in `index.html` with your real form ID:
-
-```html
-<form class="cform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-```
-
-Then set **Restrict to Domain → mahadehsan.com** in your Formspree dashboard to block off-domain submissions.
-
----
-
-## Tech
-
-Built with vanilla HTML, CSS, and JavaScript. Design system uses CSS custom properties for theming — the entire light/dark switch is a single class toggle on `<html>`.
-
-```css
-/* switching is this simple */
-document.documentElement.classList.toggle('light');
-```
-
-Fonts loaded from Google Fonts: [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) · [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans) · [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono).
-
----
+Static files served from the repo root. Any static host works (GitHub Pages, Caddy, nginx). Directory URLs such
+as `/systems/rag/` resolve to `index.html` with no server rules needed.
 
 ## Contact
 
-**mahad.ehsan@gmail.com** · [mahadehsan.com](https://mahadehsan.com)
+**mahad.ehsan@gmail.com** · [mahadehsan.com](https://mahadehsan.com) · [Book a call](https://cal.com/syed-mahad-ehsan/intro)

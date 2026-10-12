@@ -1,0 +1,139 @@
+<div class="case-block">
+    <span class="lab">TL;DR</span>
+    <p>An AI-generated schedule generator re-checked every rule against the database inside a per-date loop
+        and wrote rows one at a time, so its cost grew with every schedule it created. I moved the checks out
+        of the loop, answered them from one prefetch, and batched the writes. A year of schedules went from
+        <span class="m">8,879 → 53</span> queries and <span class="m">12.7s → 311ms</span>
+        (<span class="m">41×</span>), with output proven identical to the original.</p>
+</div>
+
+<div class="case-block">
+    <span class="lab">What was broken</span>
+    <ul>
+        <li>For roughly <span class="m">1,460</span> date × slot iterations per shift position, the loop
+            re-queried licences, certificates, leave, bank holidays, conflicts, duplicates and working-time
+            rules, plus holiday calendars, break times and status lookups.</li>
+        <li>Almost all of that was the same answer every iteration, or answerable from a single read.</li>
+        <li>Every schedule, officer assignment and readiness record was written with its own
+            <code>.create()</code> or <code>get_or_create()</code>, so database round-trips grew linearly with
+            the number of schedules.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">The fix</span>
+    <ul>
+        <li><b>Validation caching:</b> static qualification checked once per tile; only expiry-sensitive checks
+            stay per date.</li>
+        <li><b>Hoisting:</b> holiday calendar, readiness configs, break times and status types loaded once per
+            call.</li>
+        <li><b>Prefetch + in-memory maps:</b> existing schedules and assignments become dict/set lookups,
+            updated as new rows are queued.</li>
+        <li><b>Batched writes:</b> <code>bulk_create</code> in batches of <span class="m">200</span>, flushed at
+            date and config boundaries, with a per-row savepoint fallback so one bad row can't sink a batch.</li>
+        <li>Shipped behind an opt-in flag next to the original, so both paths could be compared on the same
+            input.</li>
+    </ul>
+</div>
+
+<figure class="fx-chart" aria-labelledby="fx-chart-title">
+    <figcaption>
+        <span id="fx-chart-title">Database queries per run, by date range</span>
+        <span class="fx-legend"><span class="fx-key fx-key-before"></span>original
+            <span class="fx-key fx-key-after"></span>rewrite</span>
+    </figcaption>
+    <svg class="fx-bars" viewBox="0 0 760 300" role="img"
+        aria-label="Original queries grow with the date range: 761, 2,219, 4,385 and 8,879 for 30, 90, 180 and 365 days. The rewrite stays flat at 46, 46, 49 and 53.">
+        <line class="fx-base" x1="56" y1="250" x2="744" y2="250" />
+        <g class="fx-grid">
+            <line x1="56" y1="180" x2="744" y2="180" /><text x="48" y="184">3k</text>
+            <line x1="56" y1="110" x2="744" y2="110" /><text x="48" y="114">6k</text>
+            <line x1="56" y1="40" x2="744" y2="40" /><text x="48" y="44">9k</text>
+        </g>
+        <!-- 9,000 queries = 210px. Original bars: top-rounded; rewrite bars: min 2px so they stay visible. -->
+        <g class="fx-group">
+            <path class="fx-before" d="M106 250 V235.2 a3 3 0 0 1 3 -3 h38 a3 3 0 0 1 3 3 V250 Z"><title>30 days · original: 761 queries</title></path>
+            <rect class="fx-after" x="154" y="248" width="44" height="2"><title>30 days · rewrite: 46 queries</title></rect>
+            <text class="fx-val" x="128" y="224">761</text><text class="fx-val fx-val-after" x="176" y="240">46</text>
+            <text class="fx-cat" x="152" y="272">30 days</text><text class="fx-sub" x="152" y="288">23 schedules</text>
+        </g>
+        <g class="fx-group">
+            <path class="fx-before" d="M276 250 V201.2 a3 3 0 0 1 3 -3 h38 a3 3 0 0 1 3 3 V250 Z"><title>90 days · original: 2,219 queries</title></path>
+            <rect class="fx-after" x="324" y="248" width="44" height="2"><title>90 days · rewrite: 46 queries</title></rect>
+            <text class="fx-val" x="298" y="190">2,219</text><text class="fx-val fx-val-after" x="346" y="240">46</text>
+            <text class="fx-cat" x="322" y="272">90 days</text><text class="fx-sub" x="322" y="288">68 schedules</text>
+        </g>
+        <g class="fx-group">
+            <path class="fx-before" d="M446 250 V150.7 a3 3 0 0 1 3 -3 h38 a3 3 0 0 1 3 3 V250 Z"><title>180 days · original: 4,385 queries</title></path>
+            <rect class="fx-after" x="494" y="248" width="44" height="2"><title>180 days · rewrite: 49 queries</title></rect>
+            <text class="fx-val" x="468" y="140">4,385</text><text class="fx-val fx-val-after" x="516" y="240">49</text>
+            <text class="fx-cat" x="492" y="272">180 days</text><text class="fx-sub" x="492" y="288">135 schedules</text>
+        </g>
+        <g class="fx-group">
+            <path class="fx-before" d="M616 250 V45.8 a3 3 0 0 1 3 -3 h38 a3 3 0 0 1 3 3 V250 Z"><title>365 days · original: 8,879 queries</title></path>
+            <rect class="fx-after" x="664" y="248" width="44" height="2"><title>365 days · rewrite: 53 queries</title></rect>
+            <text class="fx-val" x="638" y="34">8,879</text><text class="fx-val fx-val-after" x="686" y="240">53</text>
+            <text class="fx-cat" x="662" y="272">365 days</text><text class="fx-sub" x="662" y="288">274 schedules</text>
+        </g>
+    </svg>
+    <div class="fx-hbars" aria-hidden="true">
+        <div class="fx-hrow"><span class="fx-hcat">30 days <i>23 schedules</i></span>
+            <span class="fx-hbar"><span class="fx-hfill fx-hfill-before" style="width:8.6%"></span><b>761</b></span>
+            <span class="fx-hbar"><span class="fx-hfill fx-hfill-after" style="width:0.8%"></span><b>46</b></span></div>
+        <div class="fx-hrow"><span class="fx-hcat">90 days <i>68 schedules</i></span>
+            <span class="fx-hbar"><span class="fx-hfill fx-hfill-before" style="width:25.0%"></span><b>2,219</b></span>
+            <span class="fx-hbar"><span class="fx-hfill fx-hfill-after" style="width:0.8%"></span><b>46</b></span></div>
+        <div class="fx-hrow"><span class="fx-hcat">180 days <i>135 schedules</i></span>
+            <span class="fx-hbar"><span class="fx-hfill fx-hfill-before" style="width:49.4%"></span><b>4,385</b></span>
+            <span class="fx-hbar"><span class="fx-hfill fx-hfill-after" style="width:0.8%"></span><b>49</b></span></div>
+        <div class="fx-hrow"><span class="fx-hcat">365 days <i>274 schedules</i></span>
+            <span class="fx-hbar"><span class="fx-hfill fx-hfill-before" style="width:100.0%"></span><b>8,879</b></span>
+            <span class="fx-hbar"><span class="fx-hfill fx-hfill-after" style="width:0.8%"></span><b>53</b></span></div>
+    </div>
+    <details class="fx-table">
+        <summary>View as table</summary>
+        <table>
+            <thead><tr><th>Range</th><th>Schedules</th><th>Original queries</th><th>Rewrite queries</th></tr></thead>
+            <tbody>
+                <tr><td>30 days</td><td>23</td><td>761</td><td>46</td></tr>
+                <tr><td>90 days</td><td>68</td><td>2,219</td><td>46</td></tr>
+                <tr><td>180 days</td><td>135</td><td>4,385</td><td>49</td></tr>
+                <tr><td>365 days</td><td>274</td><td>8,879</td><td>53</td></tr>
+            </tbody>
+        </table>
+    </details>
+    <p class="fx-note">The original grows with every schedule it creates; the rewrite stays flat. Measured with
+        Django's query capture on local MySQL, median of repeated runs, each in a rolled-back transaction.</p>
+</figure>
+
+<div class="case-block">
+    <span class="lab">How I proved it</span>
+    <ul>
+        <li><b>Differential check:</b> original and rewrite run on the same seed, each in a rolled-back savepoint,
+            with every result field compared. Re-run after every change.</li>
+        <li><b>Stress test:</b> two shift positions on the same site and slot over <span class="m">250</span> days,
+            larger than one batch, so the second config has to merge with rows the first already flushed.
+            Expected <span class="m">500</span> results; both paths matched.</li>
+        <li><b>Fault injection:</b> forced every <code>bulk_create</code> to fail and a later row insert to fail;
+            the fallback isolated the bad row (<span class="m">22</span> created, <span class="m">1</span> error)
+            and the counts stayed correct.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Latent bugs found on the way</span>
+    <ul>
+        <li><b>Crash on first call:</b> a local import shadowed a module-level name, raising
+            <code>UnboundLocalError</code> before any work happened.</li>
+        <li><b>Wrong model:</b> the generated code wrote fields to a model they didn't belong to.</li>
+        <li><b>Every officer treated as relief staff:</b> a check tested for an attribute that never exists, so it
+            was always true.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Result</span>
+    <p><span class="m">8,879 → 53</span> queries, <span class="m">12.7s → 311ms</span> median for a year of
+        schedules, cost now flat as the range grows, and <span class="m">3</span> latent bugs fixed before
+        they reached users.</p>
+</div>
