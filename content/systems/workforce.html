@@ -1,0 +1,84 @@
+<div class="case-block">
+    <span class="lab">Context</span>
+    <p>A multi-company SaaS that schedules, tracks and reports on security officers across
+        sites. Managers use a web console and officers use a mobile app, with the same data
+        live on both. Scope: scheduling, attendance, leave, SIA compliance, licence deferrals,
+        biometrics, invoicing, payroll and notifications.</p>
+</div>
+
+<div class="case-block">
+    <span class="lab">Approach</span>
+    <ul>
+        <li><b>Backend at scale:</b> <span class="m">11</span> Django apps, <span
+                class="m">31</span> DRF ViewSets, and role-based access for officers, site
+            managers and admins.</li>
+        <li><b>Async work:</b> <span class="m">24</span> Celery task types and <span
+                class="m">12</span> Beat jobs for attendance polling, auto-checkout, licence
+            expiry, compliance and SIA sync. CSV imports and offer processing moved off the
+            request path, eliminating upload timeouts.</li>
+        <li><b>Realtime delivery:</b> Redis-backed SSE where each event gets a global id, goes
+            into a per-channel replay buffer, then is published live. On reconnect a client
+            subscribes first, replays everything after its Last-Event-ID, and skips duplicates
+            by id. Firebase push covers <span class="m">14</span> event types, with notification
+            fan-out deduplicated per recipient and sent only after the database commit.</li>
+        <li><b>Caching:</b> signal-driven cache invalidation for frequently read officer and
+            shift data.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Hardest problems</span>
+    <ul>
+        <li><b>Production memory leak:</b> APScheduler was starting inside each of the <span
+                class="m">3</span> Gunicorn workers, so every job ran three times and memory
+            grew until instances had to be terminated. Moved <span class="m">7</span> jobs to a
+            singleton Celery Beat, capped Redis and per-worker Celery memory, chunked the SSE
+            health refresh, and added per-process memory metrics in CloudWatch.</li>
+        <li><b>Slow bulk scheduling:</b> rewrote pattern-based generation to answer its validation checks
+            from one prefetch and write in <code>bulk_create</code> batches, taking a year of schedules from
+            <span class="m">8,879 → 53</span> queries and <span class="m">12.7s → 311ms</span> (<span
+                class="m">41×</span>). Re-running an already-generated range dropped from <span class="m">~9s →
+                0.06s</span> (thousands of queries down to <span class="m">16</span>) after moving it to Celery
+            with a check that skips already-assigned tiles. Batches of up to <span class="m">1,000</span> shift
+            tiles run with Redis-backed progress polling, and the schedule table moved to yearly MySQL range
+            partitions. <a class="cs-link" href="../../fixes/schedule-generator/">→ full write-up</a></li>
+        <li><b>Costly distance lookups:</b> the officer list used while scheduling fetched distances from Google's
+            Distance Matrix once per officer on every load, so Maps costs grew with every roster view. I redesigned
+            it around a precomputed officer-to-site distance table, recalculated only when an officer's or site's
+            location changes. Roster radius highlighting and carbon estimates now need <span class="m">0</span>
+            Maps calls, the list loads faster, and an estimated <span class="m">$1.25k–2.6k</span> a month in Maps
+            charges is avoided.
+            <span class="cs-est">Estimate: 150+ duties/day × 75–150 officers per list load × 30 days ≈
+                340k–675k elements a month, at Google's list price of $5 per 1,000 (first 100k) and $4 per 1,000
+                after, less the $200 monthly credit Google offered at the time.</span></li>
+        <li><b>Duplicate check-calls:</b> moved the check-call engine onto a proper scheduler
+            with latest-record filtering and select_related, ending duplicate firing and N+1
+            queries as patrol backlogs grew.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Infrastructure</span>
+    <p>Owned production on AWS Elastic Beanstalk: Gunicorn, nginx, Celery worker and Beat,
+        Redis, deploy hooks and CloudWatch. Wrote a pre-deploy script that stopped crashes
+        during vertical scaling, and shipped fortnightly through GitHub Actions and
+        S3/CloudFront.</p>
+</div>
+
+<div class="case-block">
+    <span class="lab">Leadership</span>
+    <ul>
+        <li>Team lead and co-tech lead for <span class="m">8</span> engineers across backend, frontend, mobile
+            and QA; created the leave management module (requests, approvals, entitlements, cover and
+            escalations), and built the Vonage video-calling proof of concept that won
+            client approval, then mentored and reviewed the engineer who integrated it.</li>
+        <li>First responder for production incidents, wrote design docs, set PR review rules and CI quality
+            gates, ran client demos, estimated work for management, and interviewed candidates.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Outcome</span>
+    <p>The daily operational backbone for enterprise clients, backed by <span
+            class="m">1,200+</span> automated tests.</p>
+</div>

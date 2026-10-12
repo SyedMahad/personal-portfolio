@@ -64,3 +64,39 @@ if (toggle) {
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 }
+// years of experience: full years since 1 March 2021, so it ticks up every 1 March.
+// The HTML keeps a static fallback number for crawlers and no-JS visitors.
+(() => {
+    const start = new Date(2021, 2, 1); // months are 0-based: 2 = March
+    const now = new Date();
+    let years = now.getFullYear() - start.getFullYear();
+    if (now < new Date(now.getFullYear(), 2, 1)) years -= 1;
+    document.querySelectorAll('.yoe').forEach(el => { el.textContent = years; });
+})();
+
+// headline fit: largest font size (up to the CSS maximum) that keeps the h1 within
+// 2 lines on tablets/desktops and 3 lines on phones (a 2-line phone headline gets too small),
+// recalculated on resize and once web fonts load. CSS clamp() stays as the no-JS fallback.
+(() => {
+    const h1 = document.querySelector('#top h1');
+    if (!h1) return;
+    const MAX_PX = 57.6, MIN_PX = 17; // 57.6px = 3.6rem
+    const maxLines = () => (window.innerWidth < 600 ? 3 : 2);
+    const lines = () => Math.round(h1.getBoundingClientRect().height / parseFloat(getComputedStyle(h1).lineHeight));
+    const fit = () => {
+        let lo = MIN_PX, hi = MAX_PX;
+        h1.style.fontSize = hi + 'px';
+        if (lines() <= maxLines()) return;
+        while (hi - lo > 0.5) {
+            const mid = (lo + hi) / 2;
+            h1.style.fontSize = mid + 'px';
+            if (lines() <= maxLines()) lo = mid; else hi = mid;
+        }
+        h1.style.fontSize = lo + 'px';
+    };
+    let t;
+    window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 100); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    fit();
+})();
+

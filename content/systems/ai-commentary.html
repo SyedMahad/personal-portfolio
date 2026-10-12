@@ -1,0 +1,21 @@
+<div class="case-block">
+        <span class="lab">Context</span>
+        <p>I inherited a mock that generated commentary from a placeholder transcript, not
+            from the video itself.</p>
+    </div>
+
+<div class="case-block">
+        <span class="lab">Approach</span>
+        <ul>
+            <li>Built a real pipeline: a clip goes to Gemini (Flash or Pro), commentary comes
+                back in a selectable style with timed SRT subtitles, and FFmpeg burns them into
+                the video.</li>
+            <li>Split the backend into LLM, prompt and video-processing layers, and showed
+                processing time in the UI so the two models could be compared.</li>
+        </ul>
+    </div>
+
+<div class="case-block">
+        <span class="lab">Outcome</span>
+        <p>A working end-to-end demo in about <span class="m">2.5</span> weeks.</p>
+    </div>

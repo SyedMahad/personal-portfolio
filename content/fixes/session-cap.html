@@ -1,0 +1,55 @@
+<div class="case-block">
+    <span class="lab">TL;DR</span>
+    <p>An AI-generated check for an account's shared monthly session limit looked at the wrong scope, still
+        counted cancelled sessions, and let two simultaneous bookings both slip through. Accounts were booking
+        past their limit for future months. I replaced it with one live, account-wide count under row locks,
+        made the monthly reset survive bad records, and proved it with <span class="m">18</span> regression
+        tests and against production data.</p>
+</div>
+
+<div class="case-block">
+    <span class="lab">What was broken</span>
+    <ul>
+        <li><b>Wrong scope:</b> for future months, the account-wide limit was checked per client–counsellor pair,
+            so an account could exceed its shared cap simply by spreading bookings across counsellors.</li>
+        <li><b>Cancellations counted:</b> the per-client check had no cancellation filter and no year bound on the
+            month.</li>
+        <li><b>Two code paths:</b> the current month compared a cached counter instead of counting live, so the
+            two paths could disagree.</li>
+        <li><b>A race:</b> two bookings arriving at the same moment could both read "under the limit" and both
+            succeed.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">The fix</span>
+    <ul>
+        <li><b>One path, one live count:</b> every booking goes through the same check, which counts
+            non-cancelled sessions in a half-open month window, scoped either to the client or to the whole
+            account.</li>
+        <li><b>Race closed:</b> inside a transaction, the account row and then the client row are locked in a
+            fixed order (avoiding deadlocks), counted, compared and saved. Simultaneous bookings now queue
+            behind each other, and the second sees the first.</li>
+        <li><b>Resilient monthly reset:</b> previously one failure aborted the whole run; now each account and
+            client is reset independently, a bad record is logged and skipped, and counts are recalculated
+            from real bookings.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">How I proved it</span>
+    <ul>
+        <li><b><span class="m">18</span> regression tests</b> covering the original bug (an account cap across
+            several clients in a future month), current- and future-month success and limit cases,
+            cancellations freeing capacity, counsellor resets not leaking into future months, the limit email
+            firing once, and the reset command surviving a bad record.</li>
+        <li><b>Verified against production data</b>, where the over-limit future-month bookings had
+            originally shown up.</li>
+    </ul>
+</div>
+
+<div class="case-block">
+    <span class="lab">Result</span>
+    <p>The shared monthly limit is enforced account-wide, cancellations free capacity again, simultaneous
+        bookings can't both pass, and one bad record no longer stops the monthly reset.</p>
+</div>
