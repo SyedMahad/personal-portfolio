@@ -28,7 +28,6 @@ Python script generates the case-study and write-up pages so they share one nav 
 ├── tools/build_systems.py      # page + homepage-card generator
 ├── tools/og-image.html         # source for the social card; screenshot at 1200×630
 ├── sitemap.xml · robots.txt
-├── CNAME                       # GitHub Pages custom domain (remove when the site moves off Pages)
 ├── Syed Mahad Ehsan's Resume.pdf   # linked from the site; keep this exact file name
 └── images/og-image.png         # social card (1200×630), rendered from tools/og-image.html
 ```
@@ -66,8 +65,9 @@ Never edit files under `systems/` or `fixes/` directly; they are overwritten on 
 
 ## Deploy
 
-Static files served from the repo root. Any static host works (GitHub Pages, Caddy, nginx). Directory URLs such
-as `/systems/rag/` resolve to `index.html` with no server rules needed.
+Served by Caddy on a VPS, behind Cloudflare (proxied, SSL mode Full (strict)). Caddy serves the repo folder,
+blocks `.git`, `content/`, `tools/` and other non-site files, adds the security headers, and gets its own
+Let's Encrypt certificate. Directory URLs such as `/systems/rag/` resolve to `index.html` with no extra rules.
 
 ## Contact
 
