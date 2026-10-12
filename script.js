@@ -17,8 +17,7 @@ if (!reduce && nodes.length) {
     }, 3400 / nodes.length);
 }
 
-// contact form: works out-of-the-box via mailto, upgrades to inbox delivery
-// once YOUR_FORM_ID is replaced with a real Formspree form id.
+// contact form: sends to Formspree without leaving the page; the honeypot field catches bots
 const cform = document.querySelector('.cform');
 if (cform) {
     const status = cform.querySelector('.cform-status');
@@ -28,18 +27,6 @@ if (cform) {
         e.preventDefault();
         const data = new FormData(cform);
         if (data.get('_gotcha')) return; // spam honeypot
-        const name = (data.get('name') || '').toString();
-        const email = (data.get('email') || '').toString();
-        const message = (data.get('message') || '').toString();
-
-        if (endpoint.includes('YOUR_FORM_ID')) {
-            // not configured yet -> open the visitor's mail client, pre-filled
-            const subject = encodeURIComponent('Portfolio enquiry from ' + name);
-            const body = encodeURIComponent(message + '\n\n' + name + ' (' + email + ')');
-            window.location.href = 'mailto:mahad.ehsan@gmail.com?subject=' + subject + '&body=' + body;
-            setStatus('Opening your email app…');
-            return;
-        }
         setStatus('Sending…');
         try {
             const res = await fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
