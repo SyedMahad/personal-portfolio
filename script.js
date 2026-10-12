@@ -74,16 +74,19 @@ if (toggle) {
     document.querySelectorAll('.yoe').forEach(el => { el.textContent = years; });
 })();
 
-// headline fit: largest font size (up to the CSS maximum) that keeps the h1 within
-// 2 lines on tablets/desktops and 3 lines on phones (a 2-line phone headline gets too small),
-// recalculated on resize and once web fonts load. CSS clamp() stays as the no-JS fallback.
+// headline fit. Tablets and up (>= 900px): a two-line lockup; line 2 gets the largest size that fits
+// the column (up to the CSS maximum), and line 1 is scaled so both lines end at the same edge.
+// Below 900px: the largest size that keeps the h1 within 2 lines (3 on phones, where 2 gets too small).
+// Recalculated on resize and once web fonts load. CSS clamp() stays as the no-JS fallback.
 (() => {
     const h1 = document.querySelector('#top h1');
     if (!h1) return;
+    const a = h1.querySelector('.h1-a'), b = h1.querySelector('.h1-b');
     const MAX_PX = 57.6, MIN_PX = 17; // 57.6px = 3.6rem
+    const LOCKUP_MIN = 900;
     const maxLines = () => (window.innerWidth < 600 ? 3 : 2);
     const lines = () => Math.round(h1.getBoundingClientRect().height / parseFloat(getComputedStyle(h1).lineHeight));
-    const fit = () => {
+    const flowFit = () => {
         let lo = MIN_PX, hi = MAX_PX;
         h1.style.fontSize = hi + 'px';
         if (lines() <= maxLines()) return;
@@ -94,9 +97,24 @@ if (toggle) {
         }
         h1.style.fontSize = lo + 'px';
     };
+    const lockupFit = () => {
+        const avail = h1.clientWidth;
+        a.style.fontSize = '';
+        let size = MAX_PX;
+        h1.style.fontSize = size + 'px';
+        const bw = b.getBoundingClientRect().width;
+        if (bw > avail) { size = size * avail / bw; h1.style.fontSize = size + 'px'; }
+        const target = b.getBoundingClientRect().width;
+        const aw = a.getBoundingClientRect().width;
+        a.style.fontSize = (parseFloat(getComputedStyle(a).fontSize) * target / aw) + 'px';
+    };
+    const fit = () => {
+        if (a && b && window.innerWidth >= LOCKUP_MIN) { lockupFit(); return; }
+        if (a) a.style.fontSize = '';
+        flowFit();
+    };
     let t;
     window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 100); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     fit();
 })();
-
